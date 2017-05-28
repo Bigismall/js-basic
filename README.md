@@ -1,0 +1,1 @@
+Podstawowe zagadnienia języka JavaScript
