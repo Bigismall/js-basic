@@ -10,5 +10,5 @@
 * [Prototypowanie w JavaScript](prototypowanie-w-javascript.md)
 * [Dziedziczenie zrobione poprawnie](dziedziczenie-zrobione-poprawnie.md)
 * [Event Loop, czyli jak działa setTimeout\(..., 0\)](event-loop-czyli-jak-dziala-settimeout-0.md)
-* JavaScript gotchas!
+* [JavaScript gotchas!](javascript-gotchas.md)
 
