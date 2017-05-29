@@ -4,7 +4,7 @@
 * [Scoping](scoping.md)
 * [Hoisting](hoisting.md)
 * [Immediately-Invoked Function Expression \(IIFE\)](immediately-invoked-function-expression-iife.md)
-* Zmienna arguments oraz metody call\(\) i apply
+* [Zmienna arguments oraz metody call\(\) i apply](zmienna-arguments-oraz-metody-call-i-apply.md)
 * Closures
 * Function.prototype.bind
 * Prototypowanie w JavaScript
