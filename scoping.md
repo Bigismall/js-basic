@@ -87,5 +87,49 @@ Zmienne globalne są problemem, ponieważ są współdzielone przez cały kod ap
 
 Nie bez przyczyny w jQuery  wykorzystano $ dla nazwy głównego modułu. Nie bez przyczyny też  metody [DOM ](https://developer.mozilla.org/pl/docs/DOM)mają tak rozwlekłe nazwy jak np. `getElementById()`.
 
+### Definiowanie zmiennych globalnych
+
+Przypadkowe utworzenie zmiennej globalnej jest wyjątkowo łatwe dzięki dwóm cechom języka JavaScript. 
+
+1. Można w nim używać zmiennych bez ich deklarowania.
+2. Istnieją tak zwane dorozumiane zmienne globalne. Polega to na tym, że dowolna zmienna, która nie zostanie jawnie zadeklarowana, staje się właściwością obiektu globalnego, i jest dostępna w podobny sposób jak zmienna globalna.
+
+```js
+myGlobal = "SolwIT";                //brak var (tu akurat nic nie zmienia)
+
+console.log(myGlobal);              //SolwIT
+console.log(window.myGlobal);       //SolwIT
+console.log(window["myGlobal"]);    //SolwIT
+console.log(this.myGlobal);         //SolwIT
+```
+
+```js
+function sum(a, b) {
+    result = a + b;                    //brak var (tutaj ma znaczenie)
+    return result;
+}
+
+console.log(sum(2, 3));		//5
+console.log(result);			//5
+```
+
+```js
+function sum(a, b) {
+    var result = a + b;        // dzięki var, result jest zmienną lokalną 
+    return result;
+}
+
+console.log(sum(2, 3));         //5
+console.log(result);            //Uncaught ReferenceError: result is not defined
+```
+
+### Definiowanie zmiennych lokalnych
+
+Jak już wcześniej wspomnieliśmy zmienne w JS mają zasięg funkcyjny.  
+
+**Składnia**_** EcmaScript 2015 **_**\(**_**ES6**_**\) pozwala na definiowanie zmiennych o zasięgu blokowym za pomocą  operatora **_**let**_**.**
+
+
+
 
 
