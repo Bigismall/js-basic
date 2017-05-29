@@ -1,8 +1,8 @@
 # Scoping
 
-## zasięg zmiennych
+## Zasięg zmiennych
 
-JavaScript so zarządzania zasięgiem zmiennych lokalnych wykorzystuje funkcje. Zmienna zdefiniowana wewnątrz funkcji jest zmienną  **lokalną**, czyli nie jest widoczna poza ciałem funkcji. Z drugiej strony zmienna **globalna** to taka, która została zadeklarowana poza funkcją lub jest używana bez jakiejkolwiek deklaracji.
+JavaScript do zarządzania zasięgiem zmiennych lokalnych wykorzystuje funkcje. Zmienna zdefiniowana wewnątrz funkcji jest zmienną  **lokalną**, czyli nie jest widoczna poza ciałem funkcji. Z drugiej strony zmienna **globalna** to taka, która została zadeklarowana poza funkcją lub jest używana bez jakiejkolwiek deklaracji.
 
 ### Czym właściwie jest obiekt globalny?
 
@@ -177,14 +177,10 @@ function localGlobal() {
 
 #### Efekty uboczne pominięcia var
 
-Istnieje pewna drobna różnica między dorozumianymi zmiennymi globalnymi a tymi zdefiniowanymi globalnie. Polega ona na możliwości usunięcia tych zmiennych za pomocą operatora `delete`. 
+Istnieje pewna drobna różnica między dorozumianymi zmiennymi globalnymi a tymi zdefiniowanymi globalnie. Polega ona na możliwości usunięcia tych zmiennych za pomocą operatora `delete`.
 
 1. Zmiennych globalnych zdefiniowanych przy użyciu `var` nie można usunąć.
 2. Dorozumiane zmienne globalne utworzone bez użycia `var`  można usuwać.
 
-Ale przecież operator `delete `pozwala na usuwanie jedynie **właściwości!**. Ta różnica wynika z tego, że dorozumiane zmienne globalne nie są technicznie prawdziwymi zmiennymi, a jedynie właściwościami obiektu globalnego.
-
-
-
-
+Ale przecież operator `delete`pozwala na usuwanie jedynie **właściwości!**. Ta różnica wynika z tego, że dorozumiane zmienne globalne nie są technicznie prawdziwymi zmiennymi, a jedynie właściwościami obiektu globalnego.
 
