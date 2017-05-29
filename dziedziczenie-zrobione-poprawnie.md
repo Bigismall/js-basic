@@ -1,0 +1,4 @@
+# Dziedziczenie zrobione poprawnie
+
+
+
