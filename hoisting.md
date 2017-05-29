@@ -37,7 +37,7 @@ showCompanyName();
 
 ### Przenoszenie deklaracji funkcji
 
-W JavaScript funkcje możemy definiować na wiele sposobów. W ogólności mamy do czynienia z 
+W JavaScript funkcje możemy definiować na wiele sposobów. W ogólności mamy do czynienia z
 
 * deklaracjami funkcji
 * wyrażeniami funkcyjnymi
@@ -73,7 +73,6 @@ var showCompanyName = function () {
     var companyName = "SolwIT";
     console.log(companyName);
 }
-
 ```
 
 Jak JavaScript widzi powyższe?
@@ -90,5 +89,21 @@ showCompanyName = function () {
 
 ## Wzorzec pojedynczego var
 
+Lekarstwem na ewentualne problemy z przenoszeniem jest wzorzec pojedynczego var. W ogólności polega to na deklaracji wszystkich zmiennych w funkcji za pomocą pojedynczego wyrażenia `var`, umieszczonego na początku funkcji. Takie działanie niejako wyprzedza działanie interpretatora języka JavaScript.
 
+```js
+function singleVar() {
+    var a = 1,
+        b = 2,
+        sum = a + b,
+        myObject = {},
+        zero;    
+}
+```
+
+Stosowanie wzorca pojedynczego var
+
+Zapewnia jedno miejsce do poszukiwania wszystkich zmiennych lokalnych wymaganych przez funkcję.
+
+Zapobiega błędom logicznym polegającym na tym, że chce się skorzystać ze zmiennej przed jej zdefiniowaniem.
 
