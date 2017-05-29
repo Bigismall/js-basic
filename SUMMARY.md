@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* Scoping
+* [Scoping](scoping.md)
 * Hoisting
 * Immediately-Invoked Function Expression \(IIFE\)
 * Zmienna arguments oraz metody call\(\) i apply
