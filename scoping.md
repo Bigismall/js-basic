@@ -89,7 +89,7 @@ Nie bez przyczyny w jQuery  wykorzystano $ dla nazwy głównego modułu. Nie bez
 
 ### Definiowanie zmiennych globalnych
 
-Przypadkowe utworzenie zmiennej globalnej jest wyjątkowo łatwe dzięki dwóm cechom języka JavaScript. 
+Przypadkowe utworzenie zmiennej globalnej jest wyjątkowo łatwe dzięki dwóm cechom języka JavaScript.
 
 1. Można w nim używać zmiennych bez ich deklarowania.
 2. Istnieją tak zwane dorozumiane zmienne globalne. Polega to na tym, że dowolna zmienna, która nie zostanie jawnie zadeklarowana, staje się właściwością obiektu globalnego, i jest dostępna w podobny sposób jak zmienna globalna.
@@ -109,8 +109,8 @@ function sum(a, b) {
     return result;
 }
 
-console.log(sum(2, 3));		//5
-console.log(result);			//5
+console.log(sum(2, 3));        //5
+console.log(result);            //5
 ```
 
 ```js
@@ -125,9 +125,30 @@ console.log(result);            //Uncaught ReferenceError: result is not defined
 
 ### Definiowanie zmiennych lokalnych
 
-Jak już wcześniej wspomnieliśmy zmienne w JS mają zasięg funkcyjny.  
+Jak już wcześniej wspomnieliśmy zmienne w JS mają zasięg funkcyjny. Co prawda składnia_ EcmaScript 2015 _\(_ES6_\) pozwala na definiowanie zmiennych **o zasięgu blokowym **za pomocą  operatora `let`_,_ ale tymczasowo nie będziemy się nią zajmować.
 
-**Składnia**_** EcmaScript 2015 **_**\(**_**ES6**_**\) pozwala na definiowanie zmiennych o zasięgu blokowym za pomocą  operatora **_**let**_**.**
+Stąd aby zadeklarować zmienną lokalną \(w kontekście funkcji\) należy użyć operatora `var`,  wewnątrz funkcji otaczającej zmienną.   Użycie `var` w kontekście obiektu globalnego stworzy natomiast zmienną globalną. 
+
+```js
+var myGlobal = "SolwIT";
+
+function sum(a, b) {
+    var result = a + b;
+    return result;
+}
+
+console.log(myGlobal);          // SolwIT
+console.log(window.myGlobal);   // SolwIT
+console.log(sum(2, 3));         // 5
+
+try {
+    console.log(result);
+} catch (e) {
+    console.log(e.message);     // scoping.js:37 result is not defined
+}
+
+console.log(window.result);     //undefined
+```
 
 
 
