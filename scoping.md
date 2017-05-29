@@ -127,7 +127,7 @@ console.log(result);            //Uncaught ReferenceError: result is not defined
 
 Jak już wcześniej wspomnieliśmy zmienne w JS mają zasięg funkcyjny. Co prawda składnia_ EcmaScript 2015 _\(_ES6_\) pozwala na definiowanie zmiennych **o zasięgu blokowym **za pomocą  operatora `let`_,_ ale tymczasowo nie będziemy się nią zajmować.
 
-Stąd aby zadeklarować zmienną lokalną \(w kontekście funkcji\) należy użyć operatora `var`,  wewnątrz funkcji otaczającej zmienną.   Użycie `var` w kontekście obiektu globalnego stworzy natomiast zmienną globalną. 
+Stąd aby zadeklarować zmienną lokalną \(w kontekście funkcji\) należy użyć operatora `var`,  wewnątrz funkcji otaczającej zmienną. Użycie `var` w kontekście obiektu globalnego stworzy natomiast zmienną globalną.
 
 ```js
 var myGlobal = "SolwIT";
@@ -149,6 +149,40 @@ try {
 
 console.log(window.result);     //undefined
 ```
+
+### Pułapka łańcucha przypisań
+
+Nieintencjonalne utworzenie dorozumianych zmiennych globalnych, ilustruje fragment kodu:
+
+```js
+function localGlobal() {
+    var a = b = 0;
+}
+
+localGlobal();
+console.log(b);     // 0
+console.log(a);     // Uncaught ReferenceError: a is not defined
+```
+
+W tym wypadku zmienna `a` będzie zmienną lokalną funkcji, ale `b` stanie się zmienną globalną, czego prawdopodobnie nie oczekiwano. Operacje wykonywane są od prawej strony. Najpierw zostaje wyliczone wyrażenie `b=0`, wynik tej operacji, czyli 0 jest przypisany do zmiennej `a`.  `b` zostaje zaś zadeklarowane jako zmienna globalna, co raczej nie było zgodne z intencją.
+
+Poprawnie powinno to wyglądać jak poniżej
+
+```js
+function localGlobal() {
+    var a, b;
+    a = b = 0;
+}
+```
+
+#### Efekty uboczne pominięcia var
+
+Istnieje pewna drobna różnica między dorozumianymi zmiennymi globalnymi a tymi zdefiniowanymi globalnie. Polega ona na możliwości usunięcia tych zmiennych za pomocą operatora `delete`. 
+
+1. Zmiennych globalnych zdefiniowanych przy użyciu `var` nie można usunąć.
+2. Dorozumiane zmienne globalne utworzone bez użycia `var`  można usuwać.
+
+Ale przecież operator `delete `pozwala na usuwanie jedynie **właściwości!**. Ta różnica wynika z tego, że dorozumiane zmienne globalne nie są technicznie prawdziwymi zmiennymi, a jedynie właściwościami obiektu globalnego.
 
 
 
