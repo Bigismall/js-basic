@@ -101,9 +101,11 @@ function singleVar() {
 }
 ```
 
-Stosowanie wzorca pojedynczego var
+### Stosowanie wzorca pojedynczego var
 
-Zapewnia jedno miejsce do poszukiwania wszystkich zmiennych lokalnych wymaganych przez funkcję.
+* Zapewnia jedno miejsce do poszukiwania wszystkich zmiennych lokalnych wymaganych przez funkcję.
+* Zapobiega błędom logicznym polegającym na tym, że chce się skorzystać ze zmiennej przed jej zdefiniowaniem.
+* Pomaga pamiętać o deklarowaniu zmiennych, więc minimalizuje ryzyko utworzenia zmiennych globalnych.
 
-Zapobiega błędom logicznym polegającym na tym, że chce się skorzystać ze zmiennej przed jej zdefiniowaniem.
+
 
