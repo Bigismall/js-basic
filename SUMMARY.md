@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 * [Scoping](scoping.md)
-* Hoisting
+* [Hoisting](hoisting.md)
 * Immediately-Invoked Function Expression \(IIFE\)
 * Zmienna arguments oraz metody call\(\) i apply
 * Closures
