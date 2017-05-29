@@ -81,5 +81,11 @@ external:External
 ...
 ```
 
+#### Dlaczego nie należy używać zmiennych globalnych?
+
+Zmienne globalne są problemem, ponieważ są współdzielone przez cały kod aplikacji JavaScript lub strony WWW. Znajdują się w tej samej globalnej przestrzeni nazw, więc zawsze istnieje ryzyko kolizji nazw, czyli sytuacji gdy dwie różne części aplikacji mają zdefiniowane zmienne globalne o tej samej nazwie, ale o różnym przeznaczeniu \(np. _result_, _i_, _index_, _db, a, foo_\)
+
+Nie bez przyczyny w jQuery  wykorzystano $ dla nazwy głównego modułu. Nie bez przyczyny też  metody [DOM ](https://developer.mozilla.org/pl/docs/DOM)mają tak rozwlekłe nazwy jak np. `getElementById()`.
+
 
 
