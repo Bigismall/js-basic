@@ -6,9 +6,9 @@
 * [Immediately-Invoked Function Expression \(IIFE\)](immediately-invoked-function-expression-iife.md)
 * [Zmienna arguments oraz metody call\(\) i apply](zmienna-arguments-oraz-metody-call-i-apply.md)
 * [Closures](closures.md)
-* Prototypowanie w JavaScript
 * [Function.prototype.bind](functionprototypebind.md)
-* Dziedziczenie zrobione poprawnie
+* [Prototypowanie w JavaScript](prototypowanie-w-javascript.md)
+* [Dziedziczenie zrobione poprawnie](dziedziczenie-zrobione-poprawnie.md)
 * Event Loop, czyli jak działa setTimeout\(..., 0\)
 * JavaScript gotchas!
 
