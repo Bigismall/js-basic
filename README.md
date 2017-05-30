@@ -1,7 +1,5 @@
 # Podstawowe zagadnienia języka JavaScript
 
-
-
 ### Środowiska uruchomieniowe
 
 * [przeglądarka internetowa](https://www.google.pl/chrome/browser/desktop/)
@@ -22,9 +20,10 @@
 * [CodePen](https://codepen.io/)
 * [JsFiddle](https://jsfiddle.net/)
 
+### Transpilery
 
-
-
+* [Babel](https://babeljs.io/repl/)
+* [TypeScript](http://www.typescriptlang.org/play/index.html)
 
 
 
