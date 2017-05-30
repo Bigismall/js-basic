@@ -19,9 +19,7 @@ showCompanyName();
 
 Co tak naprawdę się wydarzyło?  Dlaczego najpierw w wyniku mamy `undefined`a potem `SolwIT`?
 
-```
-Jak JavaScript widzi powyższe?
-```
+#### Jak JavaScript widzi powyższe?
 
 ```js
 companyName = "Intel";
