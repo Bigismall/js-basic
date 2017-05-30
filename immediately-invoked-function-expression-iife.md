@@ -64,5 +64,36 @@ Bardzo często jako argument funkcji podaje się  [obiekt globalny](/scoping.md)
 
 W przykładzie powyżej przekazano this, będącym referencją do obiektu globalnego.  W zależności od posiadania przez obiekt globalny właściwości `alert`, wyświetlony zostanie odpowiedni komunikat.
 
+### Wartości zwracane przez funkcje natychmiastowe
+
+Podobnie jak każda inna funkcja, także funkcja natychmiastowa może zwrócić wartość, a ta może zostać przypisana do zmiennej.
+
+```js
+var sumResult = (function (a, b) {
+    return a + b;
+}(2, 5));
+
+console.log(sumResult);     //7
+```
+
+Może też zwrócić funkcję  \([co przyda nam się w dalszych rozdziałach](/closures.md)\)
+
+```
+var sum = (function () {
+    return function (a, b) {
+        return a + b;
+    }
+}());
+    
+console.log(sum);            // [Function]
+console.log(sum(2, 4));      // 6
+```
+
+Lub obiekt - co bywa stosowane przy okazji tworzenia modułów, lub np. obiektów inicjujących pewne dane
+
+```
+
+```
+
 
 
