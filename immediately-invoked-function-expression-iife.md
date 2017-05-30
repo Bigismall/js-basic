@@ -38,6 +38,16 @@ SolwIT
 intel is not defined
 ```
 
+**Info:** _W EcmaScript 6 zamiast tworzenia funkcji IIFE  dla powyższego przykładu, można wykorzystać  operator `let` oraz nawiasy `{ }`._
+
+### Parametry funkcji natychmiastowych
+
+
+
+
+
+
+
 
 
 
