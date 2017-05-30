@@ -38,17 +38,31 @@ SolwIT
 intel is not defined
 ```
 
-**Info:** _W EcmaScript 6 zamiast tworzenia funkcji IIFE  dla powyższego przykładu, można wykorzystać  operator `let` oraz nawiasy `{ }`._
+**Info:** _W EcmaScript 6 zamiast tworzenia funkcji IIFE  dla powyższego przykładu, można wykorzystać  operator _`let`_ oraz nawiasy _`{ }`_._
 
 ### Parametry funkcji natychmiastowych
 
+Do funkcji natychmiastowych można także przekazać argumenty, co przedstawia poniższy przykład.
 
+```js
+(function (message, a, b) {
+    console.log(message, a + b);                //SolwIT JS Basic. And the sum is:  5
+}("SolwIT JS Basic. And the sum is: ", 2, 3));
+```
 
+Bardzo często jako argument funkcji podaje się  [obiekt globalny](/scoping.md), by był on dostępny wewnątrz funkcji, bez potrzeby korzystania z np. nazwy  `window`. Rozwiązanie to czyni kod bardziej przenośnym, bo działa prawidłowo w środowiskach innych niż przeglądarka internetowa.
 
+```js
+(function (global) {
+    if (global.hasOwnProperty('alert')) {
+        console.log('Uruchamiasz mnie w przeglądarce');
+    } else {
+        console.log('Uruchamiasz mnie poza przeglądarką');
+    }
+}(this));
+```
 
-
-
-
+W przykładzie powyżej przekazano this, będącym referencją do obiektu globalnego.  W zależności od posiadania przez obiekt globalny właściwości `alert`, wyświetlony zostanie odpowiedni komunikat.
 
 
 
