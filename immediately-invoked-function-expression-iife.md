@@ -76,7 +76,7 @@ var sumResult = (function (a, b) {
 console.log(sumResult);     //7
 ```
 
-Może też zwrócić funkcję  \([co przyda nam się w dalszych rozdziałach](/closures.md)\)
+Może też zwrócić: funkcję  \([co przyda nam się w dalszych rozdziałach](/closures.md)\), obiekt lub sama być użyta w konstrukcji obiektu
 
 ```
 var sum = (function () {
@@ -84,16 +84,41 @@ var sum = (function () {
         return a + b;
     }
 }());
-    
+
 console.log(sum);            // [Function]
 console.log(sum(2, 4));      // 6
 ```
 
-Lub obiekt - co bywa stosowane przy okazji tworzenia modułów, lub np. obiektów inicjujących pewne dane
+## Zalety i zastosowanie
 
+Wzorzec funkcji natychmiastowej stosowany jest powszechnie. Pozwala na wykonanie określonych zadań bez zaśmiecania przestrzeni globalnej zmiennymi tymczasowymi. Wszystkie zdefiniowane zmienne są lokalne względem funkcji natychmiastowej i nie wyjdą poza nią, chyba że programista zadecyduje inaczej.
+
+Wzorzec pozwala umieścić poszczególne zestawy funkcjonalności w szczelnych modułach. Jako przykład, szkielet defunicji modułu [UMD ](https://github.com/umdjs/umd/blob/master/templates/commonjsStrictGlobal.js).
+
+```js
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['exports', 'b'], function (exports, b) {
+            factory((root.commonJsStrictGlobal = exports), b);
+        });
+    } else if (typeof exports === 'object' && typeof exports.nodeName !== 'string') {
+        // CommonJS
+        factory(exports, require('b'));
+    } else {
+        // Browser globals
+        factory((root.commonJsStrictGlobal = {}), root.b);
+    }
+}(this, function (exports, b) {
+    //use b in some fashion.
+
+    // attach properties to the exports object to define
+    // the exported module properties.
+    exports.action = function () {};
+}));
 ```
 
-```
+
 
 
 
