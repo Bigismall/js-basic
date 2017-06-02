@@ -166,12 +166,11 @@ try {
 }
 
 developer.isDoing.call(manager);    //My everyday work is Outlook programming
-
 ```
 
 Mimo, iż obiekt manager nie posiada własnej funkcji `isDoing`, udało nam się z niej skorzystać. Dokonaliśmy tego "pożyczając" ją od obiektu developer poprzez metodę `call()`. Pozostało jedynie poinformować ją, z którego obiektu ma odczytać zmienne. Robimy to podając, jako jej pierwszy parametr, odpowiedni kontekst. W tym wypadku kontekstem jest obiekt, z którego zmienne chcemy odczytać, czyli _manager_.
 
-
+Spróbujmy "pożyczyć" funkcję  z obiektu i wywołać ją wprost, bez przekazywania kontekstu.
 
 ```js
 var developer = {
@@ -188,8 +187,11 @@ var developer = {
 developer.isDoing();            //My everyday work is copy-pasting, stack overflow reading
 isDoingMethod();                //My everyday work is undefined
 isDoingMethod.call(manager);    //My everyday work is Outlook programming
-
 ```
+
+Wywołanie  `isDoingMethod`  bez podania kontekstu spowodowało uruchomienie jej w kontekście globalnym, w którym nie ma zmiennej _work _\(_this.work_\). Stąd `undefined`.
+
+
 
 
 
