@@ -53,14 +53,15 @@ console.log(join("*", "Lorem", "ipsum", "dolor", "sit", "amet", "enim."));    //
 
 ### Kilka faktów na temat funkcji w JavaScript
 
-*  W JavaScript funkcje są obiektami, mogą mieć one swoje własne funkcje, zwane metodami.
-*  Funkcja jest takim samym obiektem jak np. ciąg znaków. Posiada wbudowane metody i właściwości. Możemy także dodawać nowe funkcje i właściwości do pojedynczej funkcji jak i do każdej funkcji dzięki dziedziczeniu [prototypowemu](/prototypowanie-w-javascript.md).
+* W JavaScript funkcje są obiektami, mogą mieć one swoje własne funkcje, zwane metodami.
+* Funkcja jest takim samym obiektem jak np. ciąg znaków. Posiada wbudowane metody i właściwości. Możemy także dodawać nowe funkcje i właściwości do pojedynczej funkcji jak i do każdej funkcji dzięki dziedziczeniu [prototypowemu](/prototypowanie-w-javascript.md).
 * Funkcja może być także klasą znaną z innych obiektowych języków programowania a dokładnie może być konstruktorem klasy. Tak jak w innych językach do utworzenia nowego obiektu stosuje się słowo kluczowe `new`. Jeśli go nie zastosujemy, zmienną `this`, czyli tzw. **kontekstem **będzie obiekt globalny.
 * Każda funkcja ma także dwa powiązane z nią elementy:
   **Kontekst **- czyli to, do czego odnosimy się za pomocą słowa kluczowego this
   **Argumenty **- lista argumentów przekazanych do funkcji w momencie jej wywołania
 * To, z czego niektórzy mogą nie zdawać sobie sprawy, to fakt, iż w JavaScript każda funkcja posiada cały zestaw metod już wbudowanych \(prototypowych\), gotowych do użycia. Są to między innymi interesujące nas dzisiaj:
-* [Function.prototype.apply\(\)  ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
+* \[Function.prototype.apply\(\)
+  \]\([https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Function/apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)\)
 * [Function.prototype.call\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
 
 Metody `call()` i `apply()` wywołują funkcje z zadanym kontekstem oraz argumentami podanymi jako  tablica \( _apply_ \) lub kolejne parametry \( _call_ \).
@@ -79,9 +80,9 @@ console.log.apply(null, ["Solwit", "is", "the", "best"]);   //Solwit is the best
 
 #### Pożyczanie metod
 
-Czasem zdarza się, że z istniejącego obiektu potrzeba jedynie jednej lub dwóch metod. Choć chcemy z nich skorzystać, nie chcemy tworzyć  związku przodek -  potomek pomiędzy obiektami \(dziedziczyć\). Zależy nam tylko na wybranych metodach, a nie na wszystkich znajdujących się  w oryginalnym obiekcie. Do skorzystania wykorzystamy oczywiście  _call _i _apply_. 
+Czasem zdarza się, że z istniejącego obiektu potrzeba jedynie jednej lub dwóch metod. Choć chcemy z nich skorzystać, nie chcemy tworzyć  związku przodek -  potomek pomiędzy obiektami \(dziedziczyć\). Zależy nam tylko na wybranych metodach, a nie na wszystkich znajdujących się  w oryginalnym obiekcie. Do skorzystania wykorzystamy oczywiście  _call \_i \_apply_.
 
-W wywołaniu przekazujemy własny obiekt i wszystkie parametry Pożyczona metoda będzie zawierała w swoim _this_ referencję do naszego obiektu. Można powiedzieć, że na potrzeby wykonania zadania oszukujemy wołaną metodę, że _this _to jej standardowy obiekt, choć w rzeczywistości jest inaczej. Przypomina to dziedziczenie, choć bez płacenia związanej z nim ceny \(w postaci dodatkowych parametrów i metod które nie są potrzebne\).
+W wywołaniu przekazujemy własny obiekt i wszystkie parametry Pożyczona metoda będzie zawierała w swoim _this_ referencję do naszego obiektu. Można powiedzieć, że na potrzeby wykonania zadania oszukujemy wołaną metodę, że \_this \_to jej standardowy obiekt, choć w rzeczywistości jest inaczej. Przypomina to dziedziczenie, choć bez płacenia związanej z nim ceny \(w postaci dodatkowych parametrów i metod które nie są potrzebne\).
 
 ##### Pożyczenie metod [min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min), [max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) od obiektu [Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
 
@@ -145,9 +146,50 @@ console.log(collectionArray);
 
 #### Pożyczanie i przypisanie
 
+```js
+var developer = {
+        work: "copy-pasting, stack overflow reading",
+        isDoing: function () {
+            console.log("My everyday work is " + this.work);
+        }
+    },
+    manager = {
+        work: "Outlook programming"
+    };
+
+developer.isDoing();                //My everyday work is copy-pasting, stack overflow reading
+
+try {
+    manager.isDoing();
+} catch (e) {
+    console.warn(e.message);        //manager.isDoing is not a function
+}
+
+developer.isDoing.call(manager);    //My everyday work is Outlook programming
+
+```
+
+Mimo, iż obiekt manager nie posiada własnej funkcji `isDoing`, udało nam się z niej skorzystać. Dokonaliśmy tego "pożyczając" ją od obiektu developer poprzez metodę `call()`. Pozostało jedynie poinformować ją, z którego obiektu ma odczytać zmienne. Robimy to podając, jako jej pierwszy parametr, odpowiedni kontekst. W tym wypadku kontekstem jest obiekt, z którego zmienne chcemy odczytać, czyli _manager_.
 
 
-fsdafsdf
+
+```js
+var developer = {
+        work: "copy-pasting, stack overflow reading",
+        isDoing: function () {
+            console.log("My everyday work is " + this.work);
+        }
+    },
+    manager = {
+        work: "Outlook programming"
+    },
+    isDoingMethod = developer.isDoing;
+
+developer.isDoing();            //My everyday work is copy-pasting, stack overflow reading
+isDoingMethod();                //My everyday work is undefined
+isDoingMethod.call(manager);    //My everyday work is Outlook programming
+
+```
 
 
 
