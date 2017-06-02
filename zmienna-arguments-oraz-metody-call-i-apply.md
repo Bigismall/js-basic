@@ -18,7 +18,7 @@ Argumentom mogą być również przypisywane wartości:
 arguments[1] = 'SolwIT';
 ```
 
-Obiekt arguments nie jest tablicą. Jest do niej podobny, lecz nie posiada żadnej z własności tablicy poza length.   
+Obiekt arguments nie jest tablicą. Jest do niej podobny, lecz nie posiada żadnej z własności tablicy poza length.  
 Obiekt arguments dostępny jest wyłącznie wewnątrz ciała funkcji. Próba dostępu do obiektu arguments spoza części deklaracyjnej funkcji zakończy się błędem.
 
 Możesz użyć obiektu arguments, jeśli funkcja wywołana jest z większą liczbą argumentów niż zostało to zadeklarowane. Jest to użyteczne dla funkcji, które wywoływać można ze zmienną liczbą argumentów. Aby określić liczbę argumentów przekazywanych do funkcji można użyć własności arguments.length, a następnie skorzystać z każdego z argumentów używając obiektu arguments \(aby określić liczbę argumentów zadeklarowanych podczas definiowania funkcji, skorzystać można z własności Function.length\).
@@ -34,7 +34,7 @@ function join(separator) {
 join("*", "Lorem","ipsum","dolor","sit","amet","enim.");
 ```
 
-Implementacja funkcji` join()`
+Implementacja funkcji`join()`
 
 ```js
 function join(separator) {
@@ -49,11 +49,107 @@ function join(separator) {
 console.log(join("*", "Lorem", "ipsum", "dolor", "sit", "amet", "enim."));    //Lorem*ipsum*dolor*sit*amet*enim.
 ```
 
+## Function.prototype.call\(\) i Function.prototype.apply\(\)
+
+### Kilka faktów na temat funkcji w JavaScript
+
+*  W JavaScript funkcje są obiektami, mogą mieć one swoje własne funkcje, zwane metodami.
+*  Funkcja jest takim samym obiektem jak np. ciąg znaków. Posiada wbudowane metody i właściwości. Możemy także dodawać nowe funkcje i właściwości do pojedynczej funkcji jak i do każdej funkcji dzięki dziedziczeniu [prototypowemu](/prototypowanie-w-javascript.md).
+* Funkcja może być także klasą znaną z innych obiektowych języków programowania a dokładnie może być konstruktorem klasy. Tak jak w innych językach do utworzenia nowego obiektu stosuje się słowo kluczowe `new`. Jeśli go nie zastosujemy, zmienną `this`, czyli tzw. **kontekstem **będzie obiekt globalny.
+* Każda funkcja ma także dwa powiązane z nią elementy:
+  **Kontekst **- czyli to, do czego odnosimy się za pomocą słowa kluczowego this
+  **Argumenty **- lista argumentów przekazanych do funkcji w momencie jej wywołania
+* To, z czego niektórzy mogą nie zdawać sobie sprawy, to fakt, iż w JavaScript każda funkcja posiada cały zestaw metod już wbudowanych \(prototypowych\), gotowych do użycia. Są to między innymi interesujące nas dzisiaj:
+* [Function.prototype.apply\(\)  ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
+* [Function.prototype.call\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
+
+Metody `call()` i `apply()` wywołują funkcje z zadanym kontekstem oraz argumentami podanymi jako  tablica \( _apply_ \) lub kolejne parametry \( _call_ \).
+
+```js
+console.log("Solwit", "is", "the", "best");                 //Solwit is the best
+
+console.log.call(this, "Solwit", "is", "the", "best");      //Solwit is the best
+console.log.call(null, "Solwit", "is", "the", "best");      //Solwit is the best
+
+console.log.apply(this, ["Solwit", "is", "the", "best"]);   //Solwit is the best
+console.log.apply(null, ["Solwit", "is", "the", "best"]);   //Solwit is the best
+```
+
+### Praktyczne zastosowanie metod call i apply
+
+#### Pożyczanie metod
+
+Czasem zdarza się, że z istniejącego obiektu potrzeba jedynie jednej lub dwóch metod. Choć chcemy z nich skorzystać, nie chcemy tworzyć  związku przodek -  potomek pomiędzy obiektami \(dziedziczyć\). Zależy nam tylko na wybranych metodach, a nie na wszystkich znajdujących się  w oryginalnym obiekcie. Do skorzystania wykorzystamy oczywiście  _call _i _apply_. 
+
+W wywołaniu przekazujemy własny obiekt i wszystkie parametry Pożyczona metoda będzie zawierała w swoim _this_ referencję do naszego obiektu. Można powiedzieć, że na potrzeby wykonania zadania oszukujemy wołaną metodę, że _this _to jej standardowy obiekt, choć w rzeczywistości jest inaczej. Przypomina to dziedziczenie, choć bez płacenia związanej z nim ceny \(w postaci dodatkowych parametrów i metod które nie są potrzebne\).
+
+##### Pożyczenie metod [min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min), [max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) od obiektu [Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
+
+```js
+var numbers = [5, 9, 6, 8, 2, 3, 7, 1, 4,],
+    min,
+    max;
+
+min = Math.min(numbers);
+max = Math.max(numbers);
+
+console.log(min);                   //Nan
+console.log(max);                   //Nan
 
 
-## Function.prototype.call\(\)
+min = Math.min.apply(null, numbers);
+max = Math.max.apply(null, numbers);
 
-## Function.prototype.apply\(\)
+console.log(min);                   //1
+console.log(max);                   //2
+```
+
+##### Pożyczenie metody [slice ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)od obiektu [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+```js
+function firstThree() {
+    return Array.prototype.slice.call(arguments, 0, 3);
+}
+
+console.log(firstThree(1,2,3,4,5,6,7,8,9));
+```
+
+##### Konwersja kolekcji do tablicy
+
+```js
+var collection,
+    collectionArray;
+
+collection = document.querySelectorAll("p");
+collectionArray = Array.prototype.slice.call(collection);
+
+console.log(collection);
+console.log(collectionArray);
+
+
+try {
+    collection.sort(function (a, b) {
+        return a.innerText.length - b.innerText.length;
+    });
+    console.log(collection);
+
+} catch (e) {
+    console.warn(e.message);
+}
+
+collectionArray.sort(function (a, b) {
+    return a.innerText.length - b.innerText.length;
+});
+console.log(collectionArray);
+```
+
+#### Pożyczanie i przypisanie
+
+
+
+fsdafsdf
+
+
 
 
 
