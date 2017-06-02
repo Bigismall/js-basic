@@ -60,8 +60,7 @@ console.log(join("*", "Lorem", "ipsum", "dolor", "sit", "amet", "enim."));    //
   **Kontekst **- czyli to, do czego odnosimy się za pomocą słowa kluczowego this
   **Argumenty **- lista argumentów przekazanych do funkcji w momencie jej wywołania
 * To, z czego niektórzy mogą nie zdawać sobie sprawy, to fakt, iż w JavaScript każda funkcja posiada cały zestaw metod już wbudowanych \(prototypowych\), gotowych do użycia. Są to między innymi interesujące nas dzisiaj:
-* \[Function.prototype.apply\(\)
-  \]\([https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Function/apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)\)
+* [Function.prototype.apply\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 * [Function.prototype.call\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
 
 Metody `call()` i `apply()` wywołują funkcje z zadanym kontekstem oraz argumentami podanymi jako  tablica \( _apply_ \) lub kolejne parametry \( _call_ \).
@@ -189,7 +188,7 @@ isDoingMethod();                //My everyday work is undefined
 isDoingMethod.call(manager);    //My everyday work is Outlook programming
 ```
 
-Wywołanie  `isDoingMethod`  bez podania kontekstu spowodowało uruchomienie jej w kontekście globalnym, w którym nie ma zmiennej _work _\(_this.work_\). Stąd `undefined`. 
+Wywołanie  `isDoingMethod`  bez podania kontekstu spowodowało uruchomienie jej w kontekście globalnym, w którym nie ma zmiennej _work _\(_this.work_\). Stąd `undefined`.
 
 Istnieje jednak możliwość, że w obiekcie globalnym będzie istniała właściwość work,  wówczas funkcja wypisze wynik, ale prawdopodobnie z **zupełnie inną wartością od spodziewanej**.
 
@@ -210,6 +209,17 @@ developer.isDoing();            //My everyday work is copy-pasting, stack overfl
 isDoingMethod();                //My everyday work is My everyday work is I'm a global, i do not have to do anything     (browser)
 isDoingMethod.call(manager);    //My everyday work is Outlook programming
 ```
+
+
+
+---
+
+**Źródła:**
+
+* [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Function/apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
+* [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Function/call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
+
+
 
 
 
