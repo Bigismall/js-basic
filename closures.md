@@ -60,23 +60,54 @@ function displayName() {
 
 var letDisplayName = displayName();
 letDisplayName();
-
 ```
 
-Jak pamiętamy, funkcje mogą zwracać funkcje. W przykładzie powyżej funkcja `displayName()` zwraca funkcję  \(anonimową\) która to wyświetla wartość zmiennej _name_.   
+Jak pamiętamy, funkcje mogą zwracać funkcje. W przykładzie powyżej funkcja `displayName()` zwraca funkcję  \(anonimową\) która to wyświetla wartość zmiennej _name_.
 
 **Co istotne**
 
-* zwrócona funkcja anonimowa mimo iż przypisana do zmiennej _letDisplayName  _nadal ma dostęp do zmiennej _name _spoza swojego ciała.
+* zwrócona funkcja anonimowa mimo iż przypisana do zmiennej \_letDisplayName  \_nadal ma dostęp do zmiennej \_name \_spoza swojego ciała.
 * funkcja anonimowa jest zwracana przez funkcję `displayName()` , ale nie następuje jej wykonanie
-
-
 
 Mamy zatem prywatność, co możemy z tym zrobić?
 
-counter
+```js
+function counter(initialValue) {
+    var privateCounter = initialValue;
+    return {
+        increment: function () {
+            privateCounter++;
+        },
 
+        get: function () {
+            return privateCounter;
+        }
+    }
+}
 
+var licznik = counter(150);
+console.log(licznik.get());     //150
+licznik.increment();
+console.log(licznik.get());     //151
+licznik.increment();
+licznik.increment();
+licznik.increment();
+console.log(licznik.get());     //154
+```
+
+Funkcja `counter()` zwraca tym razem obiekt posiadający 2 metody  `increment()` oraz `get()`. Pozwalają one na manipulacje prywatną zmienną  _privateCounter_.
+
+Co ciekawe, w powyższej funkcji `counter()` zmienna _privateCounter _zakończyła swój żywot \(po wywołaniu `counter(150)`\) , ale jej referencja jest zamknięta wewnątrz środowiska, do którego ma dostęp funkcja anonimowa, która została zwrócona przez counter. Powyższą funkcję można trochę uprościć:
+
+//TODO
+
+```
+function counter(init) {
+    return function(inc) {
+        return init+=inc||1;
+    };
+}
+```
 
 
 
@@ -88,7 +119,7 @@ przykład z clickami w button  lub settimeout
 
 [http://bonsaiden.github.io/JavaScript-Garden/pl/\#function.closures](http://bonsaiden.github.io/JavaScript-Garden/pl/#function.closures)
 
-[https://pl.wikipedia.org/wiki/Domknięcie\_\(programowanie\](https://pl.wikipedia.org/wiki/Domknięcie_%28programowanie\)\)
+[https://pl.wikipedia.org/wiki/Domknięcie\_\(programowanie\](https://pl.wikipedia.org/wiki/Domknięcie_%28programowanie%29\)
 
 [https://developer.mozilla.org/pl/docs/Web/JavaScript/Domkniecia](https://developer.mozilla.org/pl/docs/Web/JavaScript/Domkniecia)
 
