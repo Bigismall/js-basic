@@ -189,9 +189,27 @@ isDoingMethod();                //My everyday work is undefined
 isDoingMethod.call(manager);    //My everyday work is Outlook programming
 ```
 
-Wywołanie  `isDoingMethod`  bez podania kontekstu spowodowało uruchomienie jej w kontekście globalnym, w którym nie ma zmiennej _work _\(_this.work_\). Stąd `undefined`.
+Wywołanie  `isDoingMethod`  bez podania kontekstu spowodowało uruchomienie jej w kontekście globalnym, w którym nie ma zmiennej _work _\(_this.work_\). Stąd `undefined`. 
 
+Istnieje jednak możliwość, że w obiekcie globalnym będzie istniała właściwość work,  wówczas funkcja wypisze wynik, ale prawdopodobnie z **zupełnie inną wartością od spodziewanej**.
 
+```js
+var developer = {
+        work: "copy-pasting, stack overflow reading",
+        isDoing: function () {
+            console.log("My everyday work is " + this.work);
+        }
+    },
+    manager = {
+        work: "Outlook programming"
+    },
+    isDoingMethod = developer.isDoing,
+    work = "I'm a global, i do not have to do anything";
+
+developer.isDoing();            //My everyday work is copy-pasting, stack overflow reading
+isDoingMethod();                //My everyday work is My everyday work is I'm a global, i do not have to do anything     (browser)
+isDoingMethod.call(manager);    //My everyday work is Outlook programming
+```
 
 
 
