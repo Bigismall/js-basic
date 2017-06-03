@@ -113,7 +113,7 @@ for (var i = 0; i < 5; i++) {
 }
 ```
 
-Prawdopodobną  intencją  było aby wyświetlić napisy "SolwIT 0, "SolwIT 1, "SolwIT 2,"SolwIT 3", "SolwIT 4" z  pół sekundowym opóźnieniem.   Stało się jednak inaczej.  Po pół sekundzie wyświetliło się:
+Prawdopodobną  intencją  było aby wyświetlić napisy "SolwIT 0", "SolwIT 1", "SolwIT 2", "SolwIT 3", "SolwIT 4" z  pół sekundowym opóźnieniem.   Stało się jednak inaczej.  Po pół sekundzie wyświetliło się:
 
 ```
 SolwIT! 5
@@ -125,11 +125,7 @@ SolwIT! 5
 
 Stało się tak dlatego, że zmienna `i` z poza kontekstu naszej funkcji  po  500ms miała już wartość przypisaną w 5 iteracji, czyli 5!  Nasza funkcja zaś korzysta ze zmiennej `i`  spoza swojego zasięgu która to została zmodyfikowana przez działanie pętli.
 
-
-
 > Mała dygresja na temat sposobu działania funkcji setTimeout: Pamiętaj, że funkcja setTimeout nie zatrzymuje wywoływania całego kodu na wskazany czas, a jedynie instrukcji w niej zawartych, dlatego liczby nie będą wypisywane co pół sekundy po jednej, ale po pół sekundy od razu jedna za drugą. Dla zobrazowania: Załóżmy, że jedno przejście pętli for zajmuje komputerowi 1 ms. W pierwszym przejściu widzi funkcję setTimeout i ustawia jej wykonanie za 500 ms, czyli w 501-szej milisekundzie. W drugiej milisekundzie wchodzi do pętli drugi raz, znowu napotyka setTimeout i ustawia jego wykonanie za 500 ms, czyli w 502-giej milisekundzie działania programu itd... A po przejściu całej pętli, czyli po pięciu milisekundach, wartość zmiennej i będzie już wynosiła 5 i w takim stanie poczeka na wywołania odłożone w czasie. Oczywiście jest to duże uproszczenie i nie do końca tak to działa, jednak na potrzeby zrozumienia tematu domknięć, powinno wystarczyć.
-
-
 
 Jak już wiemy, aby prawidłowo rozwiązać to zadanie przydała by się zmienna prywatna \(analogiczna do _privateCounter_ z  poprzedniego przykładu\). Aby takową zdefiniować, musimy użyć funkcji.  Co więcej, aby nasz kod się automatycznie wykonał, musimy użyć  [funkcji natychmiastowej](/immediately-invoked-function-expression-iife.md).
 
@@ -142,10 +138,6 @@ for (var i = 0; i < 5; i++) {
     }(i));
 }
 ```
-
-
-
-
 
 **Źródła:**
 
