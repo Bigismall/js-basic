@@ -126,7 +126,7 @@ if (!Object.prototype.myMethod()) {
 
 #### Przykłady
 
-Metoda obiektu array która zwraca jedynie parzyste liczby z tablicy
+##### Metoda obiektu `Array` która zwraca jedynie parzyste liczby z tablicy
 
 ```js
 if (typeof Array.prototype.even !== "function") {
@@ -143,7 +143,22 @@ var numbers = [0, 1, 2, 3, 4, 5, 6, 7, '8', 'abc', ['def'], 9, 10];
 console.log(numbers.even());        //[ 0, 2, 4, 6, 10 ]
 ```
 
+##### Metoda obiektu `Array` która ustawia losową kolejność elementów tablicy
+
+```js
+Array.prototype.shuffle = Array.prototype.shuffle || function () {
+        return this.sort(function () {
+            return 0.5 - Math.random()
+        });
+    }
+
+var numbers = [0, 1, 2, 3, 4, 5, 6, 7, '8', 'abc', ['def'], 9, 10];
+console.log(numbers.shuffle());
+```
+
+---
+
+**Źródła:**
 
 
-[https://developer.mozilla.org/pl/docs/Web/JavaScript/Wprowadzenie\_do\_programowania\_obiektowego\_w\_jezyku\_JavaScript](https://developer.mozilla.org/pl/docs/Web/JavaScript/Wprowadzenie_do_programowania_obiektowego_w_jezyku_JavaScript)
 
