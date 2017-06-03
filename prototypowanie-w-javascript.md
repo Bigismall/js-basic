@@ -6,7 +6,7 @@ Prototyp jest obiektem \(jak większość rzeczy w JS\) i każda tworzona funkcj
 
 > W języku JavaScript prototype to właściwość funkcji i obiektów, które są tworzone przez funkcje konstruktora.Prototyp funkcji jest obiektem.Znajduje podstawowe zastosowanie, gdy funkcja jest używana jako konstruktor.
 
-```
+```js
 console.log(typeof  Object.prototype);          //object
 console.log(typeof  Number.prototype);          //object
 console.log(typeof  String.prototype);          //object
@@ -83,6 +83,52 @@ Object.seal()
 Object.setPrototypeOf()
 Object.values()
 ```
+
+## Zastosowania prototypów
+
+Przewijają się 2 główne zastosowania prototypów:
+
+* modyfikowanie zdefiniowanych lub wbudowanych obiektów \(_monkey patching_\)
+* implementacja dziedziczenia
+
+### Modyfikacja obiektów
+
+Modyfikacja właściwości _prototype_ funkcji konstruujących obiekty to wygodny i elastyczny sposób na dodawanie nowych funkcjonalności. Czasem jednak okazuje się  zbyt potężny.
+
+Modyfikowanie prototypów obiektów wbudowanych takich jak _Object_, _Array_ lub _Function_ jest kuszące, ale w praktyce znacząco utrudni konserwację kodu, bo stanie się  on mniej przewidywalny. Inni programiści korzystający z utworzonego kodu zapewne będą oczekiwali jednolicie działających obiektów wbudowanych bez żadnych dodatków.
+
+Co więcej, właściwości dodane do prototypu mogą pojawić się w pętlach, które nie zostały zabezpieczone testem wykorzystującym `hasOwnProperty()`, co może doprowadzić do dodatkowej konsternacji.
+
+Z podanych powodów lepiej **nie modyfikować** wbudowanych prototypów.  Wyjątek od tej reguły stanowią sytuacje, w których spełnione zostaną  wszystkie poniższe warunki.
+
+* Oczekuje się, ze wszystkie przyszłe wersje języka wprowadzą określoną funkcjonalność jako metodę wbudowaną, a jej implementacje będą działały identycznie. 
+* Sprawdzi się, czy tworzona metoda lub właściwość już nie istnieje - być może została dodana przez inną wykorzystywaną bibliotekę lub też została udostępniona przez przeglądarkę jako część nowszego interpretera języka.
+* Jasno i wyraźnie poinformujemy zespół o wprowadzeniu nowej metody
+
+W przypadku spełnienia powyższych, można dodać własny element do prototypu, stosując następujący wzorzec:
+
+```js
+if (typeof Object.prototype.myMethod !== "function") {
+    Object.prototype.myMethod = function () {
+
+    };
+}
+```
+
+lub krócej
+
+```js
+//uwaga - może istnieć właściwość myMethod
+if (!Object.prototype.myMethod()) {
+
+}
+```
+
+#### Przykłady
+
+Metoda obiektu array która zwraca jedynie parzyste liczby z tablicy
+
+
 
 
 
