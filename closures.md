@@ -145,6 +145,8 @@ Przygotuj stronę HTML z 5 przyciskami. Każdemu z nich przypisz etykietę  od 0
 
 
 
+
+
 **Źródła:**
 
 * [http://jcubic.pl/2014/08/funkcje-w-javascript.html](http://jcubic.pl/2014/08/funkcje-w-javascript.html)
