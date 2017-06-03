@@ -70,6 +70,10 @@ console.log(bmw.describe());    //I'm a car of coupe have 2 sits  and red color
 
 Dzięki powyższemu  zyskaliśmy pamięć, bo tworzone są tylko jedne egzemplarze funkcji `color()` i `describe()`, zachowując elastyczność  i indywidualność instancji obiektu.
 
+
+
+
+
 [https://developer.mozilla.org/pl/docs/Web/JavaScript/Wprowadzenie\_do\_programowania\_obiektowego\_w\_jezyku\_JavaScript](https://www.gitbook.com/book/bigismall/js-basic/edit#)
 
 [http://bonsaiden.github.io/JavaScript-Garden/pl/\#object.prototype](http://bonsaiden.github.io/JavaScript-Garden/pl/#object.prototype)
