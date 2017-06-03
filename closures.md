@@ -18,7 +18,7 @@
 
 ## Przykłady
 
-```
+```js
 var sentence = "outside of a closure";
 
 function basicClosure() {
@@ -30,7 +30,9 @@ basicClosure();
 console.log(sentence);      //outside of a closure
 ```
 
-Tak więc zdefiniowaliśmy zmienną \_sentence \_i ustaliliśmy jej wartość na "outside of a closure". Następnie wywołaliśmy funkcję, która zmienia wartość zmiennej \_sentence \_na "inside closure", tak? Nie :\) Zmienna a na zewnątrz funkcji `basicClosure()` to zupełnie inna zmienna niż zmienna a wewnątrz funkcji `basicClosure()`. Funkcja ta służy nam tutaj właśnie jako domknięcie, tworząc osobne "środowisko" dla wszystkich zmiennych w niej zawartych.
+Tak więc zdefiniowaliśmy zmienną _sentence_ i ustaliliśmy jej wartość na "outside of a closure". Następnie wywołaliśmy funkcję, która zmienia wartość zmiennej _sentence_ na "inside closure", tak? 
+
+Nie :\) Zmienna a na zewnątrz funkcji `basicClosure()` to zupełnie inna zmienna niż zmienna a wewnątrz funkcji `basicClosure()`. Funkcja ta służy nam tutaj właśnie jako domknięcie, tworząc osobne "środowisko" dla wszystkich zmiennych w niej zawartych.
 
 Gdybyśmy nie użyli `var` wewnątrz funkcji, efekt byłby odmienny.
 
@@ -111,15 +113,17 @@ function counter(init) {
 
 przykład z clickami w button  lub settimeout
 
-[http://jcubic.pl/2014/08/funkcje-w-javascript.html](http://jcubic.pl/2014/08/funkcje-w-javascript.html)
 
-[http://blog.nebula.us/13-javascript-closures-czyli-zrozumiec-i-wykorzystac-domkniecia](http://blog.nebula.us/13-javascript-closures-czyli-zrozumiec-i-wykorzystac-domkniecia)
 
-[http://bonsaiden.github.io/JavaScript-Garden/pl/\#function.closures](http://bonsaiden.github.io/JavaScript-Garden/pl/#function.closures)
+---
 
-[https://pl.wikipedia.org/wiki/Domknięcie\_\(programowanie\](https://pl.wikipedia.org/wiki/Domknięcie_%28programowanie%29\)
+**Źródła:**
 
-[https://developer.mozilla.org/pl/docs/Web/JavaScript/Domkniecia](https://developer.mozilla.org/pl/docs/Web/JavaScript/Domkniecia)
+* [http://jcubic.pl/2014/08/funkcje-w-javascript.html](http://jcubic.pl/2014/08/funkcje-w-javascript.html)
+* [http://blog.nebula.us/13-javascript-closures-czyli-zrozumiec-i-wykorzystac-domkniecia](http://blog.nebula.us/13-javascript-closures-czyli-zrozumiec-i-wykorzystac-domkniecia)
+* [http://bonsaiden.github.io/JavaScript-Garden/pl/\#function.closures](http://bonsaiden.github.io/JavaScript-Garden/pl/#function.closures)
+* [https://pl.wikipedia.org/wiki/Domknięcie\_\(programowanie\)](https://pl.wikipedia.org/wiki/Domkni%C4%99cie_%28programowanie%29)
+* [https://developer.mozilla.org/pl/docs/Web/JavaScript/Domkniecia](https://developer.mozilla.org/pl/docs/Web/JavaScript/Domkniecia)
 
-[https://developer.mozilla.org/pl/docs/Web/JavaScript/Domkniecia](https://developer.mozilla.org/pl/docs/Web/JavaScript/Domkniecia)
+
 
