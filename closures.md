@@ -66,7 +66,7 @@ Jak pamiętamy, funkcje mogą zwracać funkcje. W przykładzie powyżej funkcja 
 
 **Co istotne**
 
-* zwrócona funkcja anonimowa mimo iż przypisana do zmiennej \_letDisplayName  \_nadal ma dostęp do zmiennej \_name \_spoza swojego ciała.
+* zwrócona funkcja anonimowa mimo iż przypisana do zmiennej _letDisplayName_ nadal ma dostęp do zmiennej _name_ spoza swojego ciała.
 * funkcja anonimowa jest zwracana przez funkcję `displayName()` , ale nie następuje jej wykonanie
 
 Mamy zatem prywatność, co możemy z tym zrobić?
@@ -97,7 +97,7 @@ console.log(licznik.get());     //154
 
 Funkcja `counter()` zwraca tym razem obiekt posiadający 2 metody  `increment()` oraz `get()`. Pozwalają one na manipulacje prywatną zmienną  _privateCounter_.
 
-Co ciekawe, w powyższej funkcji `counter()` zmienna _privateCounter _zakończyła swój żywot \(po wywołaniu `counter(150)`\) , ale jej referencja jest zamknięta wewnątrz środowiska, do którego ma dostęp funkcja anonimowa, która została zwrócona przez counter. Powyższą funkcję można trochę uprościć:
+Co ciekawe, w powyższej funkcji `counter()` zmienna _privateCounter_ zakończyła swój żywot \(po wywołaniu `counter(150)`\) , ale jej referencja jest zamknięta wewnątrz środowiska, do którego ma dostęp funkcja anonimowa, która została zwrócona przez counter. Powyższą funkcję można trochę uprościć:
 
 //TODO
 
@@ -108,8 +108,6 @@ function counter(init) {
     };
 }
 ```
-
-
 
 przykład z clickami w button  lub settimeout
 
