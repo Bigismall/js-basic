@@ -160,3 +160,7 @@ console.log(numbers.shuffle());
 
 **Źródła:**
 
+* [http://bonsaiden.github.io/JavaScript-Garden/pl/\#object.prototype](https://www.gitbook.com/book/bigismall/js-basic/edit#)
+
+
+
