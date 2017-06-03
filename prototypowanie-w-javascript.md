@@ -11,15 +11,7 @@ console.log(typeof  String.prototype);          //object
 console.log(typeof  Function.prototype);        //function - W JavaScript'cie właściwie każda funkcja jest obiektem Function.
 ```
 
-
-
-
-
-
-
-
-
-
+Przykłady prototypów obiektów wbudowanych
 
 
 
