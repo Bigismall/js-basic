@@ -63,6 +63,12 @@ console.log(join("*", "Lorem", "ipsum", "dolor", "sit", "amet", "enim."));    //
 * [Function.prototype.apply\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 * [Function.prototype.call\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
 
+
+
+**W JavaScript bardzo istotne jest gdzie funkcja jest wywoływana, a nie gdzie jest zdefiniowana, właśnie ze względu na kontekst.**
+
+
+
 Metody `call()` i `apply()` wywołują funkcje z zadanym kontekstem oraz argumentami podanymi jako  tablica \( _apply_ \) lub kolejne parametry \( _call_ \).
 
 ```js
@@ -79,9 +85,9 @@ console.log.apply(null, ["Solwit", "is", "the", "best"]);   //Solwit is the best
 
 #### Pożyczanie metod
 
-Czasem zdarza się, że z istniejącego obiektu potrzeba jedynie jednej lub dwóch metod. Choć chcemy z nich skorzystać, nie chcemy tworzyć  związku przodek -  potomek pomiędzy obiektami \(dziedziczyć\). Zależy nam tylko na wybranych metodach, a nie na wszystkich znajdujących się  w oryginalnym obiekcie. Do skorzystania wykorzystamy oczywiście  _call \_i \_apply_.
+Czasem zdarza się, że z istniejącego obiektu potrzeba jedynie jednej lub dwóch metod. Choć chcemy z nich skorzystać, nie chcemy tworzyć  związku przodek -  potomek pomiędzy obiektami \(dziedziczyć\). Zależy nam tylko na wybranych metodach, a nie na wszystkich znajdujących się  w oryginalnym obiekcie. Do skorzystania wykorzystamy oczywiście  _call i apply_.
 
-W wywołaniu przekazujemy własny obiekt i wszystkie parametry Pożyczona metoda będzie zawierała w swoim _this_ referencję do naszego obiektu. Można powiedzieć, że na potrzeby wykonania zadania oszukujemy wołaną metodę, że \_this \_to jej standardowy obiekt, choć w rzeczywistości jest inaczej. Przypomina to dziedziczenie, choć bez płacenia związanej z nim ceny \(w postaci dodatkowych parametrów i metod które nie są potrzebne\).
+W wywołaniu przekazujemy własny obiekt i wszystkie parametry Pożyczona metoda będzie zawierała w swoim _this_ referencję do naszego obiektu. Można powiedzieć, że na potrzeby wykonania zadania oszukujemy wołaną metodę, że _this_ to jej standardowy obiekt, choć w rzeczywistości jest inaczej. Przypomina to dziedziczenie, choć bez płacenia związanej z nim ceny \(w postaci dodatkowych parametrów i metod które nie są potrzebne\).
 
 ##### Pożyczenie metod [min](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min), [max](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max) od obiektu [Math](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
 
@@ -210,18 +216,12 @@ isDoingMethod();                //My everyday work is My everyday work is I'm a 
 isDoingMethod.call(manager);    //My everyday work is Outlook programming
 ```
 
-
-
 ---
 
 **Źródła:**
 
 * [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Function/apply](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 * [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Function/call](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
-
-
-
-
 
 
 
