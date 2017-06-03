@@ -139,6 +139,12 @@ for (var i = 0; i < 5; i++) {
 }
 ```
 
+### Zadanie
+
+Przygotuj stronę HTML z 5 przyciskami. Każdemu z nich przypisz etykietę  od 1 do 5.  Przygotuj kod, który każdemu z przycisków przypisze funkcję wywołaną po kliknięciu w niego.  Funkcja powinna wyświetlić numer przycisku.
+
+
+
 **Źródła:**
 
 * [http://jcubic.pl/2014/08/funkcje-w-javascript.html](http://jcubic.pl/2014/08/funkcje-w-javascript.html)
