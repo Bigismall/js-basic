@@ -43,15 +43,32 @@ Problem można rozwiązać na kilka sposobów
 
 ### Prototypy w funkcjach konstruujących \(klasach\)
 
-Przypiszmy wzorem poprzedniego rozdziału, funkcję `color()` i `describe()` do prototypu funkcji konstruującej, pola \(właściwości\) pozostawiając bez zmian, w konstruktorze. 
+Przypiszmy wzorem poprzedniego rozdziału, funkcję `color()` i `describe()` do prototypu funkcji konstruującej, pola \(właściwości\) pozostawiając bez zmian, w konstruktorze.
+
+```js
+function Car(color, sits, type) {
+    this.color = color;
+    this.sits = parseInt(sits, 10);
+    this.type = type;
+}
+
+Car.prototype.getColor = function () {
+    return this.color;
+}
+
+Car.prototype.describe = function () {
+    return "I'm a car of " + this.type + " have " + this.sits + " sits  and " + this.getColor() + " color";
+}
+
+var mercedes = new Car("silver", 5, "limousine"),
+    bmw = new Car("red", 2, "coupe");
 
 
+console.log(mercedes.describe());   //I'm a car of limousine have 5 sits  and silver color
+console.log(bmw.describe());    //I'm a car of coupe have 2 sits  and red color
+```
 
 Dzięki powyższemu  zyskaliśmy pamięć, bo tworzone są tylko jedne egzemplarze funkcji `color()` i `describe()`, zachowując elastyczność  i indywidualność instancji obiektu.
-
-
-
-
 
 [https://developer.mozilla.org/pl/docs/Web/JavaScript/Wprowadzenie\_do\_programowania\_obiektowego\_w\_jezyku\_JavaScript](https://www.gitbook.com/book/bigismall/js-basic/edit#)
 
