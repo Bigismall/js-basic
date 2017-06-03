@@ -1,6 +1,6 @@
 # Function.prototype.bind
 
-W języku JavaScript możemy zmieniać kontekst, czyli zmienną this wewnątrz funkcji. Służą do tego trzy funkcje [_call_](/zmienna-arguments-oraz-metody-call-i-apply.md), [_apply _](/zmienna-arguments-oraz-metody-call-i-apply.md)oraz _bind_. Funkcje \_call \_oraz \_apply \_są bardzo podobne **wywołują **one daną funkcje, zmieniając kontekst. Do funkcji call przekazujemy listę argumentów po przecinku natomiast do funkcji apply tablicę argumentów. Natomiast funkcja bind **zwraca nową funkcję**, w której kontekst jest zmieniony.
+W języku JavaScript możemy zmieniać kontekst, czyli zmienną this wewnątrz funkcji. Służą do tego trzy funkcje [_call_](/zmienna-arguments-oraz-metody-call-i-apply.md), [_apply _](/zmienna-arguments-oraz-metody-call-i-apply.md)oraz _bind_. Funkcje _call_ oraz _apply_  są bardzo podobne **wywołują **one daną funkcje, zmieniając kontekst. Do funkcji call przekazujemy listę argumentów po przecinku natomiast do funkcji apply tablicę argumentów. Natomiast funkcja bind **zwraca nową funkcję**, w której kontekst jest zmieniony.
 
 Nawiązując do przykładu z poprzedniego rozdziału, zamiast pożyczać funkcję i próbować ja wywołać, zbindujmy ją kontekstem _manager_.
 
@@ -20,7 +20,7 @@ developer.isDoing();                                //My everyday work is copy-p
 isDoingMethod();                                    //My everyday work is Outlook programming
 ```
 
-Widzimy tu, że `isDoingMethod`  jest funkcją wiążącą metodę `isDooing()` oraz obiekt manager.  
+Widzimy tu, że `isDoingMethod`  jest funkcją wiążącą metodę `isDooing()` oraz obiekt manager.
 
 Funkcję  bind łatwo zaimplementować wykorzystując call lub apply.  O [protypowaniu ](/prototypowanie-w-javascript.md)jeszcze sobie opowiemy.
 
@@ -37,16 +37,12 @@ if (!Function.prototype.bind) {
 }
 ```
 
-
-
 ---
 
 **Źródła:**
 
 * [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Function/bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 * [http://jcubic.pl/2014/08/funkcje-w-javascript.html](http://jcubic.pl/2014/08/funkcje-w-javascript.html)
-
-
 
 
 
