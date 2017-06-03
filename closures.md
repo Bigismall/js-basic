@@ -30,7 +30,7 @@ basicClosure();
 console.log(sentence);      //outside of a closure
 ```
 
-Tak więc zdefiniowaliśmy zmienną _sentence_ i ustaliliśmy jej wartość na "outside of a closure". Następnie wywołaliśmy funkcję, która zmienia wartość zmiennej _sentence_ na "inside closure", tak? 
+Tak więc zdefiniowaliśmy zmienną _sentence_ i ustaliliśmy jej wartość na "outside of a closure". Następnie wywołaliśmy funkcję, która zmienia wartość zmiennej _sentence_ na "inside closure", tak?
 
 Nie :\) Zmienna a na zewnątrz funkcji `basicClosure()` to zupełnie inna zmienna niż zmienna a wewnątrz funkcji `basicClosure()`. Funkcja ta służy nam tutaj właśnie jako domknięcie, tworząc osobne "środowisko" dla wszystkich zmiennych w niej zawartych.
 
@@ -99,30 +99,56 @@ console.log(licznik.get());     //154
 
 Funkcja `counter()` zwraca tym razem obiekt posiadający 2 metody  `increment()` oraz `get()`. Pozwalają one na manipulacje prywatną zmienną  _privateCounter_.
 
-Co ciekawe, w powyższej funkcji `counter()` zmienna _privateCounter_ zakończyła swój żywot \(po wywołaniu `counter(150)`\) , ale jej referencja jest zamknięta wewnątrz środowiska, do którego ma dostęp funkcja anonimowa, która została zwrócona przez counter. Powyższą funkcję można trochę uprościć:
+Co ciekawe, w powyższej funkcji `counter()` zmienna _privateCounter_ zakończyła swój żywot \(po wywołaniu `counter(150)`\) , ale jej referencja jest zamknięta wewnątrz środowiska, do którego ma dostęp funkcja anonimowa, która została zwrócona przez funkcję counter.
 
-//TODO
+### Domknięcia wewnątrz pętli 
 
-```
-function counter(init) {
-    return function(inc) {
-        return init+=inc||1;
-    };
+Przypomnijmy, że w JavaScript zasięg jest określany przez ciało funkcji.  Częstym błędem jest założenie, że zmienne utworzone w pętli istnieją jedynie w tej pętli.  Pętla nie tworzy osobnego zasięgu!  Rozważmy przykład:
+
+```js
+for (var i = 0; i < 5; i++) {
+    setTimeout(function () {
+        console.log("SolwIT!", i);
+    }, 500);
 }
 ```
 
-przykład z clickami w button  lub settimeout
+Prawdopodobną  intencją  było aby wyświetlić napisy "SolwIT 0, "SolwIT 1, "SolwIT 2,"SolwIT 3", "SolwIT 4" z  pół sekundowym opóźnieniem.   Stało się jednak inaczej.  Po pół sekundzie wyświetliło się:
+
+```
+SolwIT! 5
+SolwIT! 5
+SolwIT! 5
+SolwIT! 5
+SolwIT! 5
+```
+
+Stało się tak dlatego, że zmienna `i` z poza kontekstu naszej funkcji  po  500ms miała już wartość przypisaną w 5 iteracji, czyli 5!  Nasza funkcja zaś korzysta ze zmiennej `i`  spoza swojego zasięgu która to została zmodyfikowana przez działanie pętli.
+
+Jak już wiemy, aby prawidłowo rozwiązać to zadanie przydała by się zmienna prywatna \(analogiczna do _privateCounter_ z  poprzedniego przykładu\). Aby takową zdefiniować, musimy użyć funkcji.  Co więcej, aby nasz kod się automatycznie wykonał, musimy użyć  [funkcji natychmiastowej](/immediately-invoked-function-expression-iife.md).
+
+```js
+for (var i = 0; i < 5; i++) {
+    (function (privateValue) {
+        setTimeout(function () {
+            console.log("SolwIT!", privateValue);
+        }, 500);
+    }(i));
+}
+```
 
 
 
----
+
+
+
 
 **Źródła:**
 
 * [http://jcubic.pl/2014/08/funkcje-w-javascript.html](http://jcubic.pl/2014/08/funkcje-w-javascript.html)
 * [http://blog.nebula.us/13-javascript-closures-czyli-zrozumiec-i-wykorzystac-domkniecia](http://blog.nebula.us/13-javascript-closures-czyli-zrozumiec-i-wykorzystac-domkniecia)
 * [http://bonsaiden.github.io/JavaScript-Garden/pl/\#function.closures](http://bonsaiden.github.io/JavaScript-Garden/pl/#function.closures)
-* [https://pl.wikipedia.org/wiki/Domknięcie\_\(programowanie\)](https://pl.wikipedia.org/wiki/Domkni%C4%99cie_%28programowanie%29)
+* [https://pl.wikipedia.org/wiki/Domknięcie\_\(programowanie\)](https://pl.wikipedia.org/wiki/Domknięcie_%28programowanie%29)
 * [https://developer.mozilla.org/pl/docs/Web/JavaScript/Domkniecia](https://developer.mozilla.org/pl/docs/Web/JavaScript/Domkniecia)
 
 
