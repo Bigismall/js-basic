@@ -101,7 +101,7 @@ Funkcja `counter()` zwraca tym razem obiekt posiadający 2 metody  `increment()`
 
 Co ciekawe, w powyższej funkcji `counter()` zmienna _privateCounter_ zakończyła swój żywot \(po wywołaniu `counter(150)`\) , ale jej referencja jest zamknięta wewnątrz środowiska, do którego ma dostęp funkcja anonimowa, która została zwrócona przez funkcję counter.
 
-### Domknięcia wewnątrz pętli 
+### Domknięcia wewnątrz pętli
 
 Przypomnijmy, że w JavaScript zasięg jest określany przez ciało funkcji.  Częstym błędem jest założenie, że zmienne utworzone w pętli istnieją jedynie w tej pętli.  Pętla nie tworzy osobnego zasięgu!  Rozważmy przykład:
 
@@ -125,6 +125,12 @@ SolwIT! 5
 
 Stało się tak dlatego, że zmienna `i` z poza kontekstu naszej funkcji  po  500ms miała już wartość przypisaną w 5 iteracji, czyli 5!  Nasza funkcja zaś korzysta ze zmiennej `i`  spoza swojego zasięgu która to została zmodyfikowana przez działanie pętli.
 
+
+
+> Mała dygresja na temat sposobu działania funkcji setTimeout: Pamiętaj, że funkcja setTimeout nie zatrzymuje wywoływania całego kodu na wskazany czas, a jedynie instrukcji w niej zawartych, dlatego liczby nie będą wypisywane co pół sekundy po jednej, ale po pół sekundy od razu jedna za drugą. Dla zobrazowania: Załóżmy, że jedno przejście pętli for zajmuje komputerowi 1 ms. W pierwszym przejściu widzi funkcję setTimeout i ustawia jej wykonanie za 500 ms, czyli w 501-szej milisekundzie. W drugiej milisekundzie wchodzi do pętli drugi raz, znowu napotyka setTimeout i ustawia jego wykonanie za 500 ms, czyli w 502-giej milisekundzie działania programu itd... A po przejściu całej pętli, czyli po pięciu milisekundach, wartość zmiennej i będzie już wynosiła 5 i w takim stanie poczeka na wywołania odłożone w czasie. Oczywiście jest to duże uproszczenie i nie do końca tak to działa, jednak na potrzeby zrozumienia tematu domknięć, powinno wystarczyć.
+
+
+
 Jak już wiemy, aby prawidłowo rozwiązać to zadanie przydała by się zmienna prywatna \(analogiczna do _privateCounter_ z  poprzedniego przykładu\). Aby takową zdefiniować, musimy użyć funkcji.  Co więcej, aby nasz kod się automatycznie wykonał, musimy użyć  [funkcji natychmiastowej](/immediately-invoked-function-expression-iife.md).
 
 ```js
@@ -136,8 +142,6 @@ for (var i = 0; i < 5; i++) {
     }(i));
 }
 ```
-
-
 
 
 
