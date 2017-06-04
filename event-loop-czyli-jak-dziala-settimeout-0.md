@@ -74,9 +74,9 @@ this is a msg from call back two
 
 Jak widać mimo iż  `callBackOne()`  i `callBackTwo()` zostały wywołane z parametrem 0ms \(lub jego brakiem\), ich wykonanie zostało odłożone na koniec kolejki \(przy czym zachowana została kolejność, wynikająca z 0ms\)
 
+Intuicyjnie zatem wykonie setTimeOut\(function,0\)  mówi - wykonaj tą funkcję tak szybko jak będzie to tylko możliwe.
 
-
-
+---
 
 **Źródła:**
 
