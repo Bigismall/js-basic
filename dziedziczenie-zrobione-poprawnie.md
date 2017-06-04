@@ -1,5 +1,15 @@
 # Dziedziczenie zrobione poprawnie
 
+## Dziedziczenie w JavaScript
+
+JavaScript nie posiada klasycznego modelu dziedziczenia. Zamiast tego dziedziczenie jest realizowane poprzez prototypy.
+
+Choć jest to często uważane za jedną ze słabości języka JavaScript, prototypowy model dziedziczenia, jest w rzeczywistości potężniejszy od klasycznego modelu. Na przykład stworzenia klasycznego modelu na podstawie modelu prototypowego jest dość proste, podczas gdy zrobienie odwrotnego przekształcenie to o wiele trudniejsze zadanie.
+
+Ze względu na fakt, że w JavaScript jest w zasadzie jedynym powszechnie stosowanym językiem, który posiada prototypowy model dziedziczenia, dostosowanie się do różnic pomiędzy tymi dwoma modelami wymaga trochę czasu.
+
+### Funkcje konstruujące - klasy
+
 Zanim przejdziemy do tematu dziedziczenia i jego przykładowych implementacji, przypomnijmy sposób realizacji klas w języku JavaScript.  Przypomnijmy wzorzec konstruktora.
 
 Pierwszy krok to wybór nazwy klasy, która staje się nazwą  konstruktora. Tradycyjnie nazwa ta zaczyna się od wielkiej litery, dla wskazania iż chodzi o funkcję  konstruującą.
@@ -70,7 +80,43 @@ console.log(bmw.describe());    //I'm a car of coupe have 2 sits  and red color
 
 Dzięki powyższemu  zyskaliśmy pamięć, bo tworzone są tylko jedne egzemplarze funkcji `color()` i `describe()`, zachowując elastyczność  i indywidualność instancji obiektu.
 
+## Dziedziczenie za pomocą łańcucha prototypów
 
+Dziedziczenie w JavaScript odbywa się za pomocą tak zwanych łańcuchów prototypów.
+
+```js
+function Person() {
+    this.weight = 100;
+
+    this.getWeight = function () {
+        return this.weight;
+    };
+
+
+}
+function Student() {
+    this.height = 180;
+    this.getHeight = function () {
+        return this.height;
+    };
+
+    this.bmi = function () {
+        return this.getWeight() / Math.pow((this.getHeight() / 100), 2)
+    }
+
+}
+Student.prototype = new Person();
+Student.prototype.constructor = Student;
+
+var student = new Student();
+
+console.log(student.constructor);
+console.log(student.getWeight());
+console.log(student.getHeight());
+console.log(student.bmi());
+```
+
+ 
 
 
 
