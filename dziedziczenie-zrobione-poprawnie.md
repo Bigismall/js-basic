@@ -117,12 +117,9 @@ Prototypy tworzą łańcuch \(ang. chain\). W momencie odwołania do właściwo�
 
 ### Pożyczanie konstruktora
 
-W przykładzie powyżej żadna z funkcji konstruujących nie przyjmuje parametrów, dlatego udało się  zrealizować dziedziczenie w miarę bezboleśnie. Właściwość  `student.constructor` zaś ciągle wskazuje na _Person_.  Ubogaćmy zatem ~~kulturow..~~.  klasę Person o właściwość _name_ przekazywaną jako parametr konstruktora.  Wpłynie to także na konstruktor klasy potomnej _Student_.  Przy okazji też  przypiszemy klasie student odpowiedni konstruktor.
-
-
+W przykładzie powyżej żadna z funkcji konstruujących nie przyjmuje parametrów, dlatego udało się  zrealizować dziedziczenie w miarę bezboleśnie. Właściwość  `student.constructor` zaś ciągle wskazuje na _Person_.  Ubogaćmy zatem ~~kulturow..~~.  klasę Person o właściwość _name_ przekazywaną jako parametr konstruktora.  Wpłynie to także na konstruktor klasy potomnej _Student_.  Przy okazji też  przypiszemy klasie student odpowiedni konstruktor, oraz wykorzystamy funkcję  [`Object.create()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create#Classical_inheritance_with_Object.create) do przypisania  klasy Person do prototypu Student.
 
 ```js
-
 function Person(name, weight) {
     this.name = name
     this.weight = weight;
@@ -137,18 +134,18 @@ function Student(name, weight, height) {
     Person.call(this, name, weight);
 
     this.height = height;
-    
+
     this.getHeight = function () {
         return this.height;
     };
 }
 
-Student.prototype = new Person();
+Student.prototype = Object.create(Person.prototype);
 Student.prototype.constructor = Student;
 
 
-var person = new Person('Jack Sparrow',80);
-var student = new Student('Black Jack',100,185);
+var person = new Person('Jack Sparrow', 80);
+var student = new Student('Black Jack', 100, 185);
 
 
 console.log(person.name);
@@ -164,17 +161,28 @@ console.log(student.getHeight());
 console.log(student.constructor);
 console.log(student instanceof Person);
 console.log(student instanceof Student);
-
 ```
 
+Jeśli chodzi o linię `Student.prototype = Object.create(Person.prototype)`; w starszych silnikach JavaScript, nie posiadających metody Object.create, można użyć tzw. "polyfill" \(aka "shim", patrz artykuł powyżej\), czyli funkcję, która stanowi swego rodzaju łatkę zapewniającą kompatybilność wsteczną danej funkcjonalności. Można też samemu napisać funkcję dającą taki sam efekt:
 
+```js
+function createObject(proto) {
+    function ctor() { }
+    ctor.prototype = proto;
+    return new ctor();
+}
 
+// Przykład użycia:
+Student.prototype = createObject(Person.prototype);
+```
 
+Pożyczanie konstruktora to najpopularniejszy sposób na dziedziczenie w JavaScript. W przedstawionym podejściu dziedziczone są zarówno właściwości prototypu obiektu rodzica jak i jego własne właściwości ustawione w konstruktorze z użyciem słowa kluczowego this.
 
+---
 
+Źródła:
 
-
-
+* [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Object/create](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
 * [developer.mozilla.org/pl/docs/Web/JavaScript/Wprowadzenie\_do\_programowania\_obiektowego\_w\_jezyku\_JavaScript](https://developer.mozilla.org/pl/docs/Web/JavaScript/Wprowadzenie_do_programowania_obiektowego_w_jezyku_JavaScript)
 * [http://bonsaiden.github.io/JavaScript-Garden/pl/\#object.prototype](http://bonsaiden.github.io/JavaScript-Garden/pl/#object.prototype)
 * [http://jcubic.pl/2015/10/programowanie-obiektowe-w-javascript.html](http://jcubic.pl/2015/10/programowanie-obiektowe-w-javascript.html)
