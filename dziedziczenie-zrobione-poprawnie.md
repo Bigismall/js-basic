@@ -107,11 +107,65 @@ Student.prototype = new Person();
 var student = new Student();
 console.log(student.getWeight());
 console.log(student.getHeight());
+console.log(student instanceof Person);
+console.log(student instanceof Student);
 ```
 
 W powyższym przykładzie prototypem obiektów Student jest obiekt Person, dlatego instancje obiektu Student posiadają dostęp do metody `getWeight()` zdefiniowanej w obiekcie Person. Obiekty utworzone za pomocą konstruktora Student **dziedziczą **po obiekcie Person.
 
-Prototypy tworzą łańcuch \(ang. chain\). W momencie odwołania do właściwości lub metody sprawdzane jest czy dana właściwość czy metoda dostępna jest w danym obiekcie, potem sprawdzany jest ciąg prototypów aż do obiektu Object, jeśli dana właściwość lub metoda nie zostanie znaleziona zwracana jest wartość _undefined_. W przypadku metody będzie to wyjątek że nie można wywołać funkcji która jest _undefiend_.
+Prototypy tworzą łańcuch \(ang. chain\). W momencie odwołania do właściwości lub metody sprawdzane jest czy dana właściwość czy metoda dostępna jest w danym obiekcie, potem sprawdzany jest ciąg prototypów aż do obiektu Object, jeśli dana właściwość lub metoda nie zostanie znaleziona zwracana jest wartość _undefined_. W przypadku metody będzie to wyjątek że nie można wywołać funkcji która jest _undefiend_.
+
+### Pożyczanie konstruktora
+
+W przykładzie powyżej żadna z funkcji konstruujących nie przyjmuje parametrów, dlatego udało się  zrealizować dziedziczenie w miarę bezboleśnie. Właściwość  `student.constructor` zaś ciągle wskazuje na _Person_.  Ubogaćmy zatem ~~kulturow..~~.  klasę Person o właściwość _name_ przekazywaną jako parametr konstruktora.  Wpłynie to także na konstruktor klasy potomnej _Student_.  Przy okazji też  przypiszemy klasie student odpowiedni konstruktor.
+
+
+
+```js
+
+function Person(name, weight) {
+    this.name = name
+    this.weight = weight;
+
+    this.getWeight = function () {
+        return this.weight;
+    };
+
+
+}
+function Student(name, weight, height) {
+    Person.call(this, name, weight);
+
+    this.height = height;
+    
+    this.getHeight = function () {
+        return this.height;
+    };
+}
+
+Student.prototype = new Person();
+Student.prototype.constructor = Student;
+
+
+var person = new Person('Jack Sparrow',80);
+var student = new Student('Black Jack',100,185);
+
+
+console.log(person.name);
+console.log(person.getWeight());
+console.log(person.constructor);
+console.log(person instanceof Person);
+console.log(person instanceof Student);
+
+
+console.log(student.name);
+console.log(student.getWeight());
+console.log(student.getHeight());
+console.log(student.constructor);
+console.log(student instanceof Person);
+console.log(student instanceof Student);
+
+```
 
 
 
@@ -119,7 +173,12 @@ W powyższym przykładzie prototypem obiektów Student jest obiekt Person, dlate
 
 
 
-[https://developer.mozilla.org/pl/docs/Web/JavaScript/Wprowadzenie\_do\_programowania\_obiektowego\_w\_jezyku\_JavaScript](https://www.gitbook.com/book/bigismall/js-basic/edit#)
 
-[http://bonsaiden.github.io/JavaScript-Garden/pl/\#object.prototype](http://bonsaiden.github.io/JavaScript-Garden/pl/#object.prototype)
+
+* [developer.mozilla.org/pl/docs/Web/JavaScript/Wprowadzenie\_do\_programowania\_obiektowego\_w\_jezyku\_JavaScript](https://developer.mozilla.org/pl/docs/Web/JavaScript/Wprowadzenie_do_programowania_obiektowego_w_jezyku_JavaScript)
+* [http://bonsaiden.github.io/JavaScript-Garden/pl/\#object.prototype](http://bonsaiden.github.io/JavaScript-Garden/pl/#object.prototype)
+* [http://jcubic.pl/2015/10/programowanie-obiektowe-w-javascript.html](http://jcubic.pl/2015/10/programowanie-obiektowe-w-javascript.html)
+* [https://nafrontendzie.pl/dziedziczenie-javascript-pozyczanie-konstruktora/](https://nafrontendzie.pl/dziedziczenie-javascript-pozyczanie-konstruktora/)
+
+
 
