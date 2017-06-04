@@ -24,6 +24,16 @@ var a = 0.1,
 console.log((a + b) === c);    //false
 ```
 
+```js
+var a = 0 * 1,
+    b = 0 * -1;
+
+console.log(a, b);      //0 -0
+console.log(a === b);   //true
+console.log(1/a === 1/b);   //false
+
+```
+
 ## To string evaluation
 
 ```js
@@ -48,7 +58,12 @@ typeof "" === "string" //true
 typeof [] === "array"; //false
 ```
 
+## Math min and max values
 
+```js
+console.log(Math.max()); // -Infinity
+console.log(Math.min()); // Infinity
+```
 
 
 
