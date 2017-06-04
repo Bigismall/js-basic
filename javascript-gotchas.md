@@ -14,6 +14,12 @@ numbers.forEach(function (number) {
 });
 ```
 
+## Automatic type conversion
+
+```js
+console.log([1,5,20,10].sort()) //[ 1, 10, 20, 5 ]
+```
+
 ## Are the numbers equal?
 
 ```js
@@ -31,7 +37,6 @@ var a = 0 * 1,
 console.log(a, b);      //0 -0
 console.log(a === b);   //true
 console.log(1/a === 1/b);   //false
-
 ```
 
 ## To string evaluation
@@ -64,10 +69,6 @@ typeof [] === "array"; //false
 console.log(Math.max()); // -Infinity
 console.log(Math.min()); // Infinity
 ```
-
-
-
-
 
 [http://www.jazcash.com/a-javascript-journey-with-only-six-characters/](http://www.jazcash.com/a-javascript-journey-with-only-six-characters/)
 
