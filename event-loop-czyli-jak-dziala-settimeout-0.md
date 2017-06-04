@@ -8,7 +8,7 @@ Pętla zdarzeń, jak sama nazwa wskazuje, to okresowo wywoływany kod sprawdzaj�
 * obliczamy pozycję graczy
 * rysujemy planszę
 
-Podobnie jak w grze, JavaScript na bieżąco sprawdza, czy ma coś do zrobienia \(obsługa naciśniętego klawisza, przewijanie, strony, wykonanie cyklicznej instrukcji,  funkcji z kolejki\).  
+Podobnie jak w grze, JavaScript na bieżąco sprawdza, czy ma coś do zrobienia \(obsługa naciśniętego klawisza, przewijanie, strony, wykonanie cyklicznej instrukcji,  funkcji z kolejki\).
 
 ```
 while (queue.waitForMessage()) {
@@ -18,9 +18,9 @@ while (queue.waitForMessage()) {
 
 JavaScript jest jednowątkowy, co oznacza, obsługa zdarzeń asynchronicznych tak naprawdę oznacza wstawienie ich na koniec kolejki i obsługę dopiero wówczas gdy będzie na to wolny zasób czasowy. Asynchroniczność jest zatem jedynie symulacją.
 
-## setTimeOut
+## setTimeOut\(\)
 
-Do wykonania funkcji w sposób "asynchroniczny"  możemy wykorzystać [Timery](https://developer.mozilla.org/en-US/Add-ons/Code_snippets/Timers), w szczególności  funkcję` setTimeOut()`.
+Do wykonania funkcji w sposób "asynchroniczny"  możemy wykorzystać [Timery](https://developer.mozilla.org/en-US/Add-ons/Code_snippets/Timers), w szczególności  funkcję`setTimeOut()`.
 
 Funkcja `setTimeOut()` pozwala na wykonanie przekazanej funkcji opóźnione o przekazaną wartość.
 
@@ -33,15 +33,15 @@ setTimeout(function () {
 
 Powyższy kod, najpierw wypisze "SolwIT"  a sekundę  później "Intel". ~~Jest to zrozumiałe działanie, bo przecież siedzimy w SolwIT a Intel jest dużo dalej.~~
 
-To, że "Intel" wyświetli się po sekundzie, jest jedynie naszym pobożnym życzeniem. Jeżeli kolejka zadań do realizacji będzie długa, a dodatkowo któryś z jej elementów przywiesi wątek JS, wówczas może się okazać, że napis "Intel" pojawi się nieco później. 
+To, że "Intel" wyświetli się po sekundzie, jest jedynie naszym pobożnym życzeniem. Jeżeli kolejka zadań do realizacji będzie długa, a dodatkowo któryś z jej elementów przywiesi wątek JS, wówczas może się okazać, że napis "Intel" pojawi się nieco później.
 
 Takie przywieszanie się  JavaScript dosyć łatwo zrealizować, przypinając kosztowną czasowo funkcję do często zachodzącego zdarzenia np `mouseMove`.
 
-Zero
+### Zero milisekund na wywołanie
 
+Skoro wiemy już, że możemy symulować asynchroniczność, to chcielibyśmy realizować to natychmiast, pomijając jakiekolwiek opóźnienie. Ustawiamy zatem 0ms, w nadziei, że przekazana funkcja uruchomi się  "od razu".  Nawet jednak ustawienie 0ms nie zmienia sposobu działania JavaScript.  Nie jest bowiem tak, że JS porzuci wszystkie inne zadania i zajmie się  naszym. Obowiązują reguły ustawiania się w kolejce.  Nie uruchomi tez naszego zadania w osobnym wątku, bo nie potrafi.
 
-
-Przeanalizujmy  poniższy kod:
+#### Zero milisekund - przykład
 
 ```js
 (function () {
@@ -70,12 +70,9 @@ this is just a message
 this is the end
 this is a msg from call back one
 this is a msg from call back two
-
 ```
 
 Jak widać mimo iż  `callBackOne()`  i `callBackTwo()` zostały wywołane z parametrem 0ms \(lub jego brakiem\), ich wykonanie zostało odłożone na koniec kolejki \(przy czym zachowana została kolejność, wynikająca z 0ms\)
-
-
 
 
 
