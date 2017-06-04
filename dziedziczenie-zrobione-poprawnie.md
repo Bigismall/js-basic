@@ -4,9 +4,9 @@
 
 JavaScript nie posiada klasycznego modelu dziedziczenia. Zamiast tego dziedziczenie jest realizowane poprzez prototypy.
 
-Choć jest to często uważane za jedną ze słabości języka JavaScript, prototypowy model dziedziczenia, jest w rzeczywistości potężniejszy od klasycznego modelu. Na przykład stworzenia klasycznego modelu na podstawie modelu prototypowego jest dość proste, podczas gdy zrobienie odwrotnego przekształcenie to o wiele trudniejsze zadanie.
+Choć jest to często uważane za jedną ze słabości języka JavaScript, prototypowy model dziedziczenia, jest w rzeczywistości potężniejszy od klasycznego modelu. Na przykład stworzenia klasycznego modelu na podstawie modelu prototypowego jest dość proste, podczas gdy zrobienie odwrotnego przekształcenie to o wiele trudniejsze zadanie.
 
-Ze względu na fakt, że w JavaScript jest w zasadzie jedynym powszechnie stosowanym językiem, który posiada prototypowy model dziedziczenia, dostosowanie się do różnic pomiędzy tymi dwoma modelami wymaga trochę czasu.
+Ze względu na fakt, że w JavaScript jest w zasadzie jedynym powszechnie stosowanym językiem, który posiada prototypowy model dziedziczenia, dostosowanie się do różnic pomiędzy tymi dwoma modelami wymaga trochę czasu.
 
 ### Funkcje konstruujące - klasy
 
@@ -99,24 +99,23 @@ function Student() {
     this.getHeight = function () {
         return this.height;
     };
-
-    this.bmi = function () {
-        return this.getWeight() / Math.pow((this.getHeight() / 100), 2)
-    }
-
 }
+
 Student.prototype = new Person();
-Student.prototype.constructor = Student;
+
 
 var student = new Student();
-
-console.log(student.constructor);
 console.log(student.getWeight());
 console.log(student.getHeight());
-console.log(student.bmi());
 ```
 
- 
+W powyższym przykładzie prototypem obiektów Student jest obiekt Person, dlatego instancje obiektu Student posiadają dostęp do metody `getWeight()` zdefiniowanej w obiekcie Person. Obiekty utworzone za pomocą konstruktora Student **dziedziczą **po obiekcie Person.
+
+Prototypy tworzą łańcuch \(ang. chain\). W momencie odwołania do właściwości lub metody sprawdzane jest czy dana właściwość czy metoda dostępna jest w danym obiekcie, potem sprawdzany jest ciąg prototypów aż do obiektu Object, jeśli dana właściwość lub metoda nie zostanie znaleziona zwracana jest wartość _undefined_. W przypadku metody będzie to wyjątek że nie można wywołać funkcji która jest _undefiend_.
+
+
+
+
 
 
 
