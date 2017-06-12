@@ -20,6 +20,8 @@ developer.isDoing();                                //My everyday work is copy-p
 isDoingMethod();                                    //My everyday work is Outlook programming
 ```
 
+[https://codepen.io/Bigismall/pen/PjzZzj](https://codepen.io/Bigismall/pen/PjzZzj)
+
 Widzimy tu, że `isDoingMethod`  jest funkcją wiążącą metodę `isDooing()` oraz obiekt manager.
 
 Funkcję  bind łatwo zaimplementować wykorzystując call lub apply.  O [protypowaniu ](/prototypowanie-w-javascript.md)jeszcze sobie opowiemy.
