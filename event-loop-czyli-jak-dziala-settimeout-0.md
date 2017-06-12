@@ -31,6 +31,8 @@ setTimeout(function () {
 }, 1000);
 ```
 
+[https://codepen.io/Bigismall/pen/vZKLbJ](https://codepen.io/Bigismall/pen/vZKLbJ)
+
 Powyższy kod, najpierw wypisze "SolwIT"  a sekundę  później "Intel". ~~Jest to zrozumiałe działanie, bo przecież siedzimy w SolwIT a Intel jest dużo dalej.~~
 
 To, że "Intel" wyświetli się po sekundzie, jest jedynie naszym pobożnym życzeniem. Jeżeli kolejka zadań do realizacji będzie długa, a dodatkowo któryś z jej elementów przywiesi wątek JS, wówczas może się okazać, że napis "Intel" pojawi się nieco później.
@@ -61,6 +63,8 @@ Skoro wiemy już, że możemy symulować asynchroniczność, to chcielibyśmy re
     console.log('this is the end');
 })();
 ```
+
+[https://codepen.io/Bigismall/pen/LLZGax](https://codepen.io/Bigismall/pen/LLZGax)
 
 wynik:
 
