@@ -17,6 +17,8 @@ function showCompanyName() {
 showCompanyName();
 ```
 
+[https://codepen.io/Bigismall/pen/YQWXrv](https://codepen.io/Bigismall/pen/YQWXrv)
+
 Co tak naprawdę się wydarzyło?  Dlaczego najpierw w wyniku mamy `undefined`a potem `SolwIT`?
 
 #### Jak JavaScript widzi powyższe?
@@ -32,6 +34,8 @@ function showCompanyName() {
 
 showCompanyName();
 ```
+
+[https://codepen.io/Bigismall/pen/VWjLrx](https://codepen.io/Bigismall/pen/VWjLrx)
 
 ### Przenoszenie deklaracji funkcji
 
@@ -51,6 +55,8 @@ function showCompanyName() {
 }
 ```
 
+[https://codepen.io/collection/nmOwRe/](https://codepen.io/collection/nmOwRe/)
+
 Jak JavaScript widzi powyższe?
 
 ```js
@@ -61,6 +67,8 @@ function showCompanyName() {
 
 showCompanyName();      //SolwIT
 ```
+
+[https://codepen.io/Bigismall/pen/YQWXej](https://codepen.io/Bigismall/pen/YQWXej)
 
 Wyrażenia funkcyjne zaś obowiązuje taka sama zasada jak zmienne.
 
@@ -73,6 +81,8 @@ var showCompanyName = function () {
 }
 ```
 
+[https://codepen.io/Bigismall/pen/EXyjEX](https://codepen.io/Bigismall/pen/EXyjEX)
+
 Jak JavaScript widzi powyższe?
 
 ```
@@ -84,6 +94,8 @@ showCompanyName = function () {
     console.log(companyName);
 }
 ```
+
+[https://codepen.io/Bigismall/pen/JJKdvO](https://codepen.io/Bigismall/pen/JJKdvO)
 
 ## Wzorzec pojedynczego var
 
