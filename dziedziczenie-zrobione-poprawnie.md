@@ -30,6 +30,8 @@ function Car(color, sits, type) {
 }
 ```
 
+[https://codepen.io/Bigismall/pen/VWjeBp](https://codepen.io/Bigismall/pen/VWjeBp)
+
 Zauważmy, że funkcja konstruująca \(konstruktor\) niczego nie zwraca, metody i pola \(właściwości\) są zaś przypisywane za pomocą operatora `this`. Kiedy konstruktor zostanie wywołany operatorem `new`, obiekt będzie stworzony, zanim jeszcze dojdzie do wykonania pierwszego kodu konstruktora. Dostęp do tego obiektu \(w tym momencie\) możliwy jest tylko poprzez `this`. Możliwe jest więc przypisywanie bezpośrednio do this  właściwości które zostaną domyślnie zwrócone jako wartość funkcji \(bez konieczności używania operatora `return`\)
 
 ```js
@@ -78,6 +80,8 @@ console.log(mercedes.describe());   //I'm a car of limousine have 5 sits  and si
 console.log(bmw.describe());    //I'm a car of coupe have 2 sits  and red color
 ```
 
+[https://codepen.io/Bigismall/pen/dRXGqN](https://codepen.io/Bigismall/pen/dRXGqN)
+
 Dzięki powyższemu  zyskaliśmy pamięć, bo tworzone są tylko jedne egzemplarze funkcji `color()` i `describe()`, zachowując elastyczność  i indywidualność instancji obiektu.
 
 ## Dziedziczenie za pomocą łańcucha prototypów
@@ -111,9 +115,11 @@ console.log(student instanceof Person);
 console.log(student instanceof Student);
 ```
 
+[https://codepen.io/Bigismall/pen/ZyOQMd](https://codepen.io/Bigismall/pen/ZyOQMd)
+
 W powyższym przykładzie prototypem obiektów Student jest obiekt Person, dlatego instancje obiektu Student posiadają dostęp do metody `getWeight()` zdefiniowanej w obiekcie Person. Obiekty utworzone za pomocą konstruktora Student **dziedziczą **po obiekcie Person.
 
-Prototypy tworzą łańcuch \(ang. chain\). W momencie odwołania do właściwości lub metody sprawdzane jest czy dana właściwość czy metoda dostępna jest w danym obiekcie, potem sprawdzany jest ciąg prototypów aż do obiektu Object, jeśli dana właściwość lub metoda nie zostanie znaleziona zwracana jest wartość _undefined_. W przypadku metody będzie to wyjątek że nie można wywołać funkcji która jest _undefiend_.
+Prototypy tworzą łańcuch \(ang. chain\). W momencie odwołania do właściwości lub metody sprawdzane jest czy dana właściwość czy metoda dostępna jest w danym obiekcie, potem sprawdzany jest ciąg prototypów aż do obiektu Object, jeśli dana właściwość lub metoda nie zostanie znaleziona zwracana jest wartość _undefined_. W przypadku metody będzie to wyjątek że nie można wywołać funkcji która jest _undefined_.
 
 ### Pożyczanie konstruktora
 
@@ -162,6 +168,8 @@ console.log(student.constructor);
 console.log(student instanceof Person);
 console.log(student instanceof Student);
 ```
+
+[https://codepen.io/Bigismall/pen/xrOZmV](https://codepen.io/Bigismall/pen/xrOZmV)
 
 Jeśli chodzi o linię `Student.prototype = Object.create(Person.prototype)`; w starszych silnikach JavaScript, nie posiadających metody Object.create, można użyć tzw. "polyfill" \(aka "shim", patrz artykuł powyżej\), czyli funkcję, która stanowi swego rodzaju łatkę zapewniającą kompatybilność wsteczną danej funkcjonalności. Można też samemu napisać funkcję dającą taki sam efekt:
 
