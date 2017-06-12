@@ -160,6 +160,8 @@ try {
 console.log(window.result);     //undefined
 ```
 
+https://codepen.io/Bigismall/pen/yXJNbN
+
 ### Pułapka łańcucha przypisań
 
 Nieintencjonalne utworzenie dorozumianych zmiennych globalnych, ilustruje fragment kodu:
@@ -173,6 +175,8 @@ localGlobal();
 console.log(b);     // 0
 console.log(a);     // Uncaught ReferenceError: a is not defined
 ```
+
+https://codepen.io/Bigismall/pen/zzBGzN
 
 W tym wypadku zmienna `a` będzie zmienną lokalną funkcji, ale `b` stanie się zmienną globalną, czego prawdopodobnie nie oczekiwano. Operacje wykonywane są od prawej strony. Najpierw zostaje wyliczone wyrażenie `b=0`, wynik tej operacji, czyli 0 jest przypisany do zmiennej `a`.  `b` zostaje zaś zadeklarowane jako zmienna globalna, co raczej nie było zgodne z intencją.
 
