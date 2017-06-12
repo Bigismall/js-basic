@@ -30,6 +30,8 @@ basicClosure();
 console.log(sentence);      //outside of a closure
 ```
 
+[https://codepen.io/Bigismall/pen/zzBrBQ](https://codepen.io/Bigismall/pen/zzBrBQ)
+
 Tak więc zdefiniowaliśmy zmienną _sentence_ i ustaliliśmy jej wartość na "outside of a closure". Następnie wywołaliśmy funkcję, która zmienia wartość zmiennej _sentence_ na "inside closure", tak?
 
 Nie :\) Zmienna a na zewnątrz funkcji `basicClosure()` to zupełnie inna zmienna niż zmienna a wewnątrz funkcji `basicClosure()`. Funkcja ta służy nam tutaj właśnie jako domknięcie, tworząc osobne "środowisko" dla wszystkich zmiennych w niej zawartych.
@@ -48,6 +50,8 @@ basicClosure();
 console.log(sentence);      //inside a closure
 ```
 
+[https://codepen.io/Bigismall/pen/weWMoP](https://codepen.io/Bigismall/pen/weWMoP)
+
 ### Zmienne prywatne
 
 JavaScript nie oferuje obsługi zmiennych prywatnych, ale jak widać na przykładzie powyżej, zmienne "domknięte" w funkcji nie mogą być modyfikowane z zewnątrz tej funkcji, są więc nijako prywatne.
@@ -63,6 +67,8 @@ function displayName() {
 var letDisplayName = displayName();
 letDisplayName();
 ```
+
+[https://codepen.io/Bigismall/pen/eRzJgX](https://codepen.io/Bigismall/pen/eRzJgX)
 
 Jak pamiętamy, funkcje mogą zwracać funkcje. W przykładzie powyżej funkcja `displayName()` zwraca funkcję  \(anonimową\) która to wyświetla wartość zmiennej _name_.
 
@@ -97,6 +103,8 @@ licznik.increment();
 console.log(licznik.get());     //154
 ```
 
+[https://codepen.io/Bigismall/pen/GEqoEE](https://codepen.io/Bigismall/pen/GEqoEE)
+
 Funkcja `counter()` zwraca tym razem obiekt posiadający 2 metody  `increment()` oraz `get()`. Pozwalają one na manipulacje prywatną zmienną  _privateCounter_.
 
 Co ciekawe, w powyższej funkcji `counter()` zmienna _privateCounter_ zakończyła swój żywot \(po wywołaniu `counter(150)`\) , ale jej referencja jest zamknięta wewnątrz środowiska, do którego ma dostęp funkcja anonimowa, która została zwrócona przez funkcję counter.
@@ -112,6 +120,8 @@ for (var i = 0; i < 5; i++) {
     }, 500);
 }
 ```
+
+[https://codepen.io/Bigismall/pen/rwLxzg](https://codepen.io/Bigismall/pen/rwLxzg)
 
 Prawdopodobną  intencją  było aby wyświetlić napisy "SolwIT 0", "SolwIT 1", "SolwIT 2", "SolwIT 3", "SolwIT 4" z  pół sekundowym opóźnieniem.   Stało się jednak inaczej.  Po pół sekundzie wyświetliło się:
 
@@ -138,6 +148,8 @@ for (var i = 0; i < 5; i++) {
     }(i));
 }
 ```
+
+[https://codepen.io/Bigismall/pen/eRzJea](https://codepen.io/Bigismall/pen/eRzJea)
 
 ### Zadanie
 
