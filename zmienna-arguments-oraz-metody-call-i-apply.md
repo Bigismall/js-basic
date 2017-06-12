@@ -34,6 +34,8 @@ function join(separator) {
 join("*", "Lorem","ipsum","dolor","sit","amet","enim.");
 ```
 
+[https://codepen.io/Bigismall/pen/vZKNMN](https://codepen.io/Bigismall/pen/vZKNMN)
+
 Implementacja funkcji`join()`
 
 ```js
@@ -49,6 +51,8 @@ function join(separator) {
 console.log(join("*", "Lorem", "ipsum", "dolor", "sit", "amet", "enim."));    //Lorem*ipsum*dolor*sit*amet*enim.
 ```
 
+[https://codepen.io/Bigismall/pen/mwEeYP](https://codepen.io/Bigismall/pen/mwEeYP)
+
 ## Function.prototype.call\(\) i Function.prototype.apply\(\)
 
 ### Kilka faktów na temat funkcji w JavaScript
@@ -63,11 +67,7 @@ console.log(join("*", "Lorem", "ipsum", "dolor", "sit", "amet", "enim."));    //
 * [Function.prototype.apply\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 * [Function.prototype.call\(\)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
 
-
-
 **W JavaScript bardzo istotne jest gdzie funkcja jest wywoływana, a nie gdzie jest zdefiniowana, właśnie ze względu na kontekst.**
-
-
 
 Metody `call()` i `apply()` wywołują funkcje z zadanym kontekstem oraz argumentami podanymi jako  tablica \( _apply_ \) lub kolejne parametry \( _call_ \).
 
@@ -80,6 +80,8 @@ console.log.call(null, "Solwit", "is", "the", "best");      //Solwit is the best
 console.log.apply(this, ["Solwit", "is", "the", "best"]);   //Solwit is the best
 console.log.apply(null, ["Solwit", "is", "the", "best"]);   //Solwit is the best
 ```
+
+[https://codepen.io/Bigismall/pen/dRXYBP](https://codepen.io/Bigismall/pen/dRXYBP)
 
 ### Praktyczne zastosowanie metod call i apply
 
@@ -107,8 +109,10 @@ min = Math.min.apply(null, numbers);
 max = Math.max.apply(null, numbers);
 
 console.log(min);                   //1
-console.log(max);                   //2
+console.log(max);                   //9
 ```
+
+[https://codepen.io/Bigismall/pen/MoeaMB](https://codepen.io/Bigismall/pen/MoeaMB)
 
 ##### Pożyczenie metody [slice ](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)od obiektu [Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 
@@ -119,6 +123,8 @@ function firstThree() {
 
 console.log(firstThree(1,2,3,4,5,6,7,8,9));
 ```
+
+[https://codepen.io/Bigismall/pen/EXyVqM](https://codepen.io/Bigismall/pen/EXyVqM)
 
 ##### Konwersja kolekcji do tablicy
 
@@ -149,6 +155,8 @@ collectionArray.sort(function (a, b) {
 console.log(collectionArray);
 ```
 
+[https://codepen.io/Bigismall/pen/eRzJOQ](https://codepen.io/Bigismall/pen/eRzJOQ)
+
 #### Pożyczanie i przypisanie
 
 ```js
@@ -173,6 +181,8 @@ try {
 developer.isDoing.call(manager);    //My everyday work is Outlook programming
 ```
 
+[https://codepen.io/Bigismall/pen/xrOZbo](https://codepen.io/Bigismall/pen/xrOZbo)
+
 Mimo, iż obiekt manager nie posiada własnej funkcji `isDoing`, udało nam się z niej skorzystać. Dokonaliśmy tego "pożyczając" ją od obiektu developer poprzez metodę `call()`. Pozostało jedynie poinformować ją, z którego obiektu ma odczytać zmienne. Robimy to podając, jako jej pierwszy parametr, odpowiedni kontekst. W tym wypadku kontekstem jest obiekt, z którego zmienne chcemy odczytać, czyli _manager_.
 
 Spróbujmy "pożyczyć" funkcję  z obiektu i wywołać ją wprost, bez przekazywania kontekstu.
@@ -193,6 +203,8 @@ developer.isDoing();            //My everyday work is copy-pasting, stack overfl
 isDoingMethod();                //My everyday work is undefined
 isDoingMethod.call(manager);    //My everyday work is Outlook programming
 ```
+
+[https://codepen.io/Bigismall/pen/owLbjX](https://codepen.io/Bigismall/pen/owLbjX)
 
 Wywołanie  `isDoingMethod`  bez podania kontekstu spowodowało uruchomienie jej w kontekście globalnym, w którym nie ma zmiennej _work _\(_this.work_\). Stąd `undefined`.
 
@@ -215,6 +227,8 @@ developer.isDoing();            //My everyday work is copy-pasting, stack overfl
 isDoingMethod();                //My everyday work is My everyday work is I'm a global, i do not have to do anything     (browser)
 isDoingMethod.call(manager);    //My everyday work is Outlook programming
 ```
+
+[https://codepen.io/Bigismall/pen/KqMVVe](https://codepen.io/Bigismall/pen/KqMVVe)
 
 ---
 
