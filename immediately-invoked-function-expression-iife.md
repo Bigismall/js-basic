@@ -78,7 +78,7 @@ console.log(sumResult);     //7
 
 Może też zwrócić: funkcję  \([co przyda nam się w dalszych rozdziałach](/closures.md)\), obiekt lub sama być użyta w konstrukcji obiektu
 
-```
+```js
 var sum = (function () {
     return function (a, b) {
         return a + b;
@@ -93,7 +93,7 @@ console.log(sum(2, 4));      // 6
 
 Wzorzec funkcji natychmiastowej stosowany jest powszechnie. Pozwala na wykonanie określonych zadań bez zaśmiecania przestrzeni globalnej zmiennymi tymczasowymi. Wszystkie zdefiniowane zmienne są lokalne względem funkcji natychmiastowej i nie wyjdą poza nią, chyba że programista zadecyduje inaczej.
 
-Wzorzec pozwala umieścić poszczególne zestawy funkcjonalności w szczelnych modułach. Jako przykład, szkielet defunicji modułu [UMD ](https://github.com/umdjs/umd/blob/master/templates/commonjsStrictGlobal.js).
+Wzorzec pozwala umieścić poszczególne zestawy funkcjonalności w szczelnych modułach. Jako przykład, szkielet definicji modułu [UMD ](https://github.com/umdjs/umd/blob/master/templates/commonjsStrictGlobal.js).
 
 ```js
 (function (root, factory) {
@@ -117,8 +117,6 @@ Wzorzec pozwala umieścić poszczególne zestawy funkcjonalności w szczelnych m
     exports.action = function () {};
 }));
 ```
-
-
 
 
 
