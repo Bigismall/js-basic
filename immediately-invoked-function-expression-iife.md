@@ -10,6 +10,8 @@ Natychmiastowo-wywoływane wyrażenie funkcyjne, jest często stosowane w język
 }());
 ```
 
+[https://codepen.io/Bigismall/pen/qjNOMw](https://codepen.io/Bigismall/pen/qjNOMw)
+
 Powyższy skrypt spowoduje wypisanie w konsoli napisu "SolwIT".   Skoro wspomniano już o [domknięciu ](/closures.md)i [zakresie funkcyjnym](/scoping.md), prześledźmy kolejny skrypt.
 
 ```js
@@ -28,6 +30,8 @@ try {
     console.warn(e.message);
 }
 ```
+
+[https://codepen.io/Bigismall/pen/QgEjZM](https://codepen.io/Bigismall/pen/QgEjZM)
 
 w wyniku powyższego otrzymamy:
 
@@ -50,6 +54,8 @@ Do funkcji natychmiastowych można także przekazać argumenty, co przedstawia p
 }("SolwIT JS Basic. And the sum is: ", 2, 3));
 ```
 
+[https://codepen.io/Bigismall/pen/xrOwyB](https://codepen.io/Bigismall/pen/xrOwyB)
+
 Bardzo często jako argument funkcji podaje się  [obiekt globalny](/scoping.md), by był on dostępny wewnątrz funkcji, bez potrzeby korzystania z np. nazwy  `window`. Rozwiązanie to czyni kod bardziej przenośnym, bo działa prawidłowo w środowiskach innych niż przeglądarka internetowa.
 
 ```js
@@ -61,6 +67,8 @@ Bardzo często jako argument funkcji podaje się  [obiekt globalny](/scoping.md)
     }
 }(this));
 ```
+
+[https://codepen.io/Bigismall/pen/NgrGEg](https://codepen.io/Bigismall/pen/NgrGEg)
 
 W przykładzie powyżej przekazano this, będącym referencją do obiektu globalnego.  W zależności od posiadania przez obiekt globalny właściwości `alert`, wyświetlony zostanie odpowiedni komunikat.
 
@@ -76,6 +84,8 @@ var sumResult = (function (a, b) {
 console.log(sumResult);     //7
 ```
 
+[https://codepen.io/Bigismall/pen/KqMdJZ](https://codepen.io/Bigismall/pen/KqMdJZ)
+
 Może też zwrócić: funkcję  \([co przyda nam się w dalszych rozdziałach](/closures.md)\), obiekt lub sama być użyta w konstrukcji obiektu
 
 ```js
@@ -88,6 +98,8 @@ var sum = (function () {
 console.log(sum);            // [Function]
 console.log(sum(2, 4));      // 6
 ```
+
+[https://codepen.io/Bigismall/pen/GEqpeq](https://codepen.io/Bigismall/pen/GEqpeq)
 
 ## Zalety i zastosowanie
 
