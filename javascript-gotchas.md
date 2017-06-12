@@ -14,11 +14,15 @@ numbers.forEach(function (number) {
 });
 ```
 
+[https://codepen.io/Bigismall/pen/QgEyoY](https://codepen.io/Bigismall/pen/QgEyoY)
+
 ## Automatic type conversion
 
 ```js
 console.log([1,5,20,10].sort()) //[ 1, 10, 20, 5 ]
 ```
+
+[https://codepen.io/Bigismall/pen/gRMPye](https://codepen.io/Bigismall/pen/gRMPye)
 
 ## Are the numbers equal?
 
@@ -39,6 +43,8 @@ console.log(a === b);   //true
 console.log(1/a === 1/b);   //false
 ```
 
+[https://codepen.io/Bigismall/pen/XgKXwb](https://codepen.io/Bigismall/pen/XgKXwb)
+
 ## To string evaluation
 
 ```js
@@ -55,6 +61,8 @@ console.log(e, typeof e);   // 22 number
 console.log(f, typeof f);   // 2 number
 ```
 
+[https://codepen.io/Bigismall/pen/OgXMYE](https://codepen.io/Bigismall/pen/OgXMYE)
+
 ## Type of  trap
 
 ```js
@@ -63,12 +71,16 @@ typeof "" === "string" //true
 typeof [] === "array"; //false
 ```
 
+[https://codepen.io/Bigismall/pen/gRMPNz](https://codepen.io/Bigismall/pen/gRMPNz)
+
 ## Math min and max values
 
 ```js
 console.log(Math.max()); // -Infinity
 console.log(Math.min()); // Infinity
 ```
+
+[https://codepen.io/Bigismall/pen/dRXGxR](https://codepen.io/Bigismall/pen/dRXGxR)
 
 ## Also
 
