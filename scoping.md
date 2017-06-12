@@ -18,6 +18,8 @@ var global = (function () {
 console.log(global);
 ```
 
+[https://codepen.io/Bigismall/pen/NgrqqJ](https://codepen.io/Bigismall/pen/NgrqqJ)
+
 Powyższa funkcja natychmiastowa, zwraca referencję do obiektu globalnego.  W zależności od środowiska uruchomienowego będzie to odpowiednio:
 
 ##### Przeglądarka internetowa
@@ -101,7 +103,11 @@ console.log(myGlobal);              //SolwIT
 console.log(window.myGlobal);       //SolwIT
 console.log(window["myGlobal"]);    //SolwIT
 console.log(this.myGlobal);         //SolwIT
+
+
 ```
+
+https://codepen.io/Bigismall/pen/yXJNOL
 
 ```js
 function sum(a, b) {
@@ -113,6 +119,8 @@ console.log(sum(2, 3));        //5
 console.log(result);            //5
 ```
 
+https://codepen.io/Bigismall/pen/LLZVRj
+
 ```js
 function sum(a, b) {
     var result = a + b;        // dzięki var, result jest zmienną lokalną 
@@ -122,6 +130,8 @@ function sum(a, b) {
 console.log(sum(2, 3));         //5
 console.log(result);            //Uncaught ReferenceError: result is not defined
 ```
+
+https://codepen.io/Bigismall/pen/mwEJOj
 
 ### Definiowanie zmiennych lokalnych
 
