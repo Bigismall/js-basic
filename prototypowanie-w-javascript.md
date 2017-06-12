@@ -143,6 +143,8 @@ var numbers = [0, 1, 2, 3, 4, 5, 6, 7, '8', 'abc', ['def'], 9, 10];
 console.log(numbers.even());        //[ 0, 2, 4, 6, 10 ]
 ```
 
+[https://codepen.io/Bigismall/pen/EXyPEa](https://codepen.io/Bigismall/pen/EXyPEa)
+
 ##### Metoda obiektu `Array` która ustawia losową kolejność elementów tablicy
 
 ```js
@@ -155,6 +157,8 @@ Array.prototype.shuffle = Array.prototype.shuffle || function () {
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, '8', 'abc', ['def'], 9, 10];
 console.log(numbers.shuffle());
 ```
+
+https://codepen.io/Bigismall/pen/pwbgLG
 
 ---
 
