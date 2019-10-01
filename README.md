@@ -25,5 +25,6 @@
 * [Babel](https://babeljs.io/repl/)
 * [TypeScript](http://www.typescriptlang.org/play/index.html)
 
+### Code Formatter
 
-
+* [Prettier](https://prettier.io/)
