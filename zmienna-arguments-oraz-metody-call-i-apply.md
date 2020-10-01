@@ -53,6 +53,8 @@ console.log(join("*", "Lorem", "ipsum", "dolor", "sit", "amet", "enim."));    //
 
 [https://codepen.io/Bigismall/pen/mwEeYP](https://codepen.io/Bigismall/pen/mwEeYP)
 
+**Ważne!** Zmienna `arguments` nie jest dostępna w przypadku funkcji strzałkowych (arrow functions). Wynika to z natury tychże funkcji. Odwołanie się do `arguments` wewnątrz funkcji strzałkowej zaowocuje ReferenceError.
+
 ## Function.prototype.call\(\) i Function.prototype.apply\(\)
 
 ### Kilka faktów na temat funkcji w JavaScript
